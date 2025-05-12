@@ -1,10 +1,51 @@
+<!--
+Project: Z-CAFE Lab Static Website
+Includes: index.html template + guidance for additional pages (about.html, research.html, people.html, contact.html)
+Uses Tailwind CSS CDN for modern, responsive UI
+-->
+
+<!-- index.html -->
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My First Page</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>This is my GitHub Pages site.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Z-CAFE Lab</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">Z-CAFE Lab</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-800">Home</a></li>
+          <li><a href="about.html" class="hover:text-blue-800">About</a></li>
+          <li><a href="research.html" class="hover:text-blue-800">Research</a></li>
+          <li><a href="people.html" class="hover:text-blue-800">People</a></li>
+          <li><a href="contact.html" class="hover:text-blue-800">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-6 py-12">
+    <section class="text-center">
+      <h2 class="text-4xl font-semibold mb-4">Computational Aging, Family, and Evidence</h2>
+      <p class="text-lg mb-6">Welcome to the Z-CAFE Lab at Yale University<br />
+      Bringing data science to health, aging, and inequality research.</p>
+      <a href="research.html" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition">Our Research</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow mt-10">
+    <div class="container mx-auto px-6 py-4 text-center text-sm text-gray-600">
+      &copy; 2025 Z-CAFE Lab, Yale University
+    </div>
+  </footer>
+</body>
 </html>
