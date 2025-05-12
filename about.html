@@ -6,7 +6,36 @@
   <title>About Z-CAFE Lab</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Z-CAFE Lab</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">Z-CAFE Lab</h1>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="index.html" class="hover:text-blue-800">Home</a></li>
+          <li><a href="about.html" class="hover:text-blue-800">About</a></li>
+          <li><a href="research.html" class="hover:text-blue-800">Research</a></li>
+          <li><a href="people.html" class="hover:text-blue-800">People</a></li>
+          <li><a href="contact.html" class="hover:text-blue-800">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
   <!-- Copy header from index.html -->
   <header class="bg-white shadow"> ... </header>
   <main class="flex-grow container mx-auto px-6 py-12">
@@ -14,7 +43,17 @@
     <p class="mb-4">The Z-CAFE Lab, led by Professor Zang, specializes in computational methods...</p>
     <!-- Add images, team bios, mission statements -->
   </main>
-  <!-- Copy footer -->
-  <footer class="bg-white shadow mt-10"> ... </footer>
+  <main class="flex-grow container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-semibold mb-6">About Us</h2>
+    <p class="mb-4">The Z-CAFE Lab, led by Professor Zang, specializes in computational methods...</p>
+    <!-- Add images, team bios, mission statements -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow mt-10">
+    <div class="container mx-auto px-6 py-4 text-center text-sm text-gray-600">
+      &copy; 2025 Z-CAFE Lab, Yale University
+    </div>
+  </footer>
 </body>
 </html>
