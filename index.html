@@ -41,47 +41,6 @@ Uses Tailwind CSS CDN for modern, responsive UI
     </section>
   </main>
   
-
-  <!-- carousel.html -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Position slides absolute and hide all by default */
-    .carousel-item { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
-    /* Show the active slide */
-    .carousel-item.active { opacity: 1; }
-  </style>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div id="carousel" class="relative w-full max-w-xl overflow-hidden rounded-2xl shadow-lg">
-    <!-- Slides -->
-    <div class="carousel-item active">
-      <!-- Replace with your image or text block -->
-      <img src="https://wp.media.unc.edu/biostatistics/wp-content/uploads/sites/2/2019/04/Biostats3.jpg" alt="Slide 1" class="w-full h-auto" />
-    </div>
-    <div class="carousel-item">
-      <img src="https://www.masterspublichealth.net/wp-content/uploads/2014/03/biostats.gif.jpeg" alt="Slide 2" class="w-full h-auto" />
-    </div>
-    <div class="carousel-item">
-      <div class="w-full h-64 flex items-center justify-center bg-blue-100">
-        <h3 class="text-2xl font-bold text-blue-700">Sample Text Slide</h3>
-      </div>
-    </div>
-  </div>
-
-  <!-- Carousel Script -->
-  <script>
-    const slides = document.querySelectorAll('#carousel .carousel-item');
-    let current = 0;
-    function showSlide(idx) {
-      slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-    }
-    setInterval(() => {
-      current = (current + 1) % slides.length;
-      showSlide(current);
-    }, 3000); // change slide every 3s
-  </script>
-</body>
-
-
   
   <!-- Footer -->
   <footer class="bg-white shadow mt-10">
