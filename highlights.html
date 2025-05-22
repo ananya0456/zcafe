@@ -1,46 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Highlights — Z-CAFE Lab</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-CAFE Lab - Highlights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the Inter font and general layout */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light grey background */
+            color: #333;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+        }
+
+        /* Styles for elements that will animate */
+        .animate-on-scroll {
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below its final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to final position */
+        }
+
+        /* Delay for sequential animations (adjust as needed for more elements) */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+        .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+        .animate-on-scroll:nth-child(7) { transition-delay: 0.6s; }
+        .animate-on-scroll:nth-child(8) { transition-delay: 0.7s; }
+        .animate-on-scroll:nth-child(9) { transition-delay: 0.8s; }
+        .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
+        .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
+
+        /* Specific styles for the primary button */
+        .btn-primary {
+            background-color: #3b82f6; /* Blue */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #e2e8f0; /* Lighter grey for footer */
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 50px; /* Space above footer */
+        }
+
+        /* Scroll arrow animation (if you decide to add one to this page) */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .scroll-arrow {
+            animation: bounce 1.5s infinite; /* Apply bounce animation */
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 flex flex-col min-h-screen">
-  <!-- Copy header from index.html -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-blue-600">Z-CAFE Lab</h1>
-      <nav>
-        <ul class="flex space-x-6">
-          <li><a href="index.html" class="hover:text-blue-800">Home</a></li>
-          <li><a href="team.html" class="hover:text-blue-800">Team</a></li>
-          <li><a href="research.html" class="hover:text-blue-800">Research</a></li>
-          <li><a href="highlights.html" class="hover:text-blue-800">Highlights</a></li>
-          <li><a href="contact.html" class="hover:text-blue-800">Contact</a></li>
+<body>
+    <nav class="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
+        <div class="text-lg font-bold text-blue-800">Z-CAFE Lab</div>
+        <ul class="flex space-x-5">
+            <li><a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors duration-300">Home</a></li>
+            <li><a href="team.html" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors duration-300">Team</a></li>
+            <li><a href="research.html" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors duration-300">Research</a></li>
+            <li><a href="highlights.html" class="text-blue-600 font-bold text-sm transition-colors duration-300">Highlights</a></li> <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 font-medium text-sm transition-colors duration-300">Contact</a></li>
         </ul>
-      </nav>
-    </div>
-  </header>
-  <main class="flex-grow container mx-auto px-6 py-12">
-    <h2 class="text-3xl font-semibold mb-6">Lab Highlights</h2>
-    <p class="mb-4">Discover our latest publications, press features, and milestones in computational aging research.</p>
-    <!-- Use cards/grid for highlights: -->
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Example highlight card -->
-      <div class="bg-white p-6 rounded-10xl shadow">
-        <h3 class="text-xl font-bold mb-2">New Publication in JAMA</h3>
-        <p class="text-sm mb-4">A study on aging biomarkers using advanced statistical models.</p>
-        <a href="#" class="text-blue-600 hover:underline">Read more</a>
-      </div>
-      <!-- Add more cards as needed -->
-    </div>
-  </main>
-  <!-- Copy footer -->
-  <footer class="bg-white shadow mt-10">
-    <div class="container mx-auto px-6 py-4 text-center text-sm text-gray-600">
-      &copy; 2025 Z-CAFE Lab, Yale University
-    </div>
-  </footer>
+    </nav>
+
+    <header class="text-center py-12 px-4 md:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-800 mb-3 animate-on-scroll">
+                Lab Highlights
+            </h1>
+            <p class="text-md md:text-lg text-gray-600 mb-8 animate-on-scroll">
+                Celebrating our achievements, news, and notable contributions to the field.
+            </p>
+            <!--
+            <div class="mt-8 animate-on-scroll scroll-arrow">
+                <svg class="w-8 h-8 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+            -->
+        </div>
+    </header>
+
+    <main class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-5xl mx-auto">
+
+            <section class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-8 animate-on-scroll">Recent News & Achievements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Dr. Zang Receives Prestigious Grant for New Project</h3>
+                        <p class="text-gray-600 mb-4">
+                            We are thrilled to announce that Dr. Emily Zang has been awarded the "Innovators in Social Science" grant from the National Research Foundation for her groundbreaking work on computational methods in family aging.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: May 15, 2025</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">New Publication in "Nature Aging"</h3>
+                        <p class="text-gray-600 mb-4">
+                            Our latest research on the long-term effects of social isolation on cognitive decline has been published in the esteemed journal, Nature Aging. This study, led by Yifan Lou, provides critical insights for public health interventions.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: April 28, 2025</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Graduate Student Zitong Wang Presents at International Conference</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zitong Wang successfully presented their paper on "AI-driven models for predicting elder care needs" at the International Conference on Computational Social Science, receiving excellent feedback.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: March 10, 2025</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Lab Featured in Yale News Article</h3>
+                        <p class="text-gray-600 mb-4">
+                            The Z-CAFE Lab's innovative approach to data science in aging research was highlighted in a recent Yale News feature, showcasing our commitment to interdisciplinary collaboration.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: February 20, 2025</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-8 animate-on-scroll">Awards & Media</h2>
+                <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                    <ul class="list-disc list-inside text-gray-700 space-y-3">
+                        <li class="animate-on-scroll">
+                            <span class="font-semibold">Award Name:</span> Recipient Name (Year) - Description of award.
+                        </li>
+                        <li class="animate-on-scroll">
+                            <span class="font-semibold">Media Outlet:</span> Link to article/segment (Date) - Brief summary.
+                        </li>
+                        <li class="animate-on-scroll">
+                            <span class="font-semibold">Recognition:</span> Details of other notable recognition.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Z-CAFE Lab, Yale University
+    </footer>
+
+    <script>
+        // JavaScript for scroll-based animations using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add 'is-visible' class when element enters viewport
+                        entry.target.classList.add('is-visible');
+                        // Stop observing once it's visible to prevent re-triggering
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger slightly earlier/later
+            });
+
+            // Observe each element
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
 </body>
 </html>
