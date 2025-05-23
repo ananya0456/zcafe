@@ -61,7 +61,6 @@
             font-weight: 500;
             font-size: 0.9em; /* Slightly smaller font for secondary button */
             transition: background-color 0.3s ease, color 0.3s ease;
-            /* No margin-top here as it will be applied to the container */
             display: inline-block; /* Allows padding and margin */
         }
 
@@ -79,6 +78,28 @@
             color: #666;
             margin-top: 50px; /* Space above footer */
         }
+
+        /* Header styling for the interactive background */
+        header {
+            position: relative; /* Needed for z-index to work on children */
+            overflow: hidden; /* Hide any overflow from circles */
+            background-color: #f0f2f5; /* Fallback background for header */
+            background-image: linear-gradient(to right, #e0e7ff, #eef2ff); /* Re-added gradient to header */
+            /* The header's padding and text-align are already set */
+        }
+
+        header .max-w-4xl {
+            position: relative;
+            z-index: 1; /* Ensure text content is above the circles */
+        }
+
+        /* Styles for the interactive circles */
+        .interactive-circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none; /* Allow mouse events to pass through to elements behind */
+            transition: transform 0.1s ease-out; /* Smooth movement */
+        }
     </style>
 </head>
 <body>
@@ -94,6 +115,8 @@
     </nav>
 
     <header class="text-center py-16 px-4 md:px-8 lg:px-16">
+        <div id="interactive-circles-container" class="absolute inset-0 z-0"></div>
+
         <div class="max-w-4xl mx-auto">
             <br>
             <br>
@@ -125,33 +148,33 @@
             <div class="grid md:grid-cols-2 gap-6 text-left">
                 <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project A: example title here</h3>
+                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Alpha: Longevity Data Analysis</h3>
                         <p class="text-sm text-gray-600">
-                            Randomly generated project description: Investigating long-term health trends using large-scale demographic datasets and advanced statistical models.
+                            Investigating long-term health trends using large-scale demographic datasets and advanced statistical models.
                         </p>
                     </div>
                     </div>
                 <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project B: title here</h3>
+                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Beta: Family Dynamics & Health Outcomes</h3>
                         <p class="text-sm text-gray-600">
-                            Randomly generated project description: Analyzing the impact of family structures and intergenerational relationships on health and well-being.
+                            Analyzing the impact of family structures and intergenerational relationships on health and well-being.
                         </p>
                     </div>
                     </div>
                 <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project C: another title here</h3>
+                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Gamma: Inequality in Healthcare Access</h3>
                         <p class="text-sm text-gray-600">
-                            Randomly generated project description: Examining disparities in healthcare access and outcomes across different socioeconomic groups.
+                            Examining disparities in healthcare access and outcomes across different socioeconomic groups.
                         </p>
                     </div>
                     </div>
                 <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
                     <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project D: example title here!</h3>
+                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Delta: Evidence-Based Policy Making</h3>
                         <p class="text-sm text-gray-600">
-                            Randomly generated project description: Developing tools and frameworks to translate research findings into actionable policy recommendations.
+                            Developing tools and frameworks to translate research findings into actionable policy recommendations.
                         </p>
                     </div>
                     </div>
@@ -189,6 +212,91 @@
             animateElements.forEach(element => {
                 observer.observe(element);
             });
+
+            // --- Interactive 2D Circles with Repulsion and Parallax ---
+            const circlesContainer = document.getElementById('interactive-circles-container');
+            const numCircles = 30; // Number of circles
+            const circles = [];
+            let mouseX = 0;
+            let mouseY = 0;
+
+            // Generate circles
+            for (let i = 0; i < numCircles; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('interactive-circle');
+
+                const size = Math.random() * 60 + 20; // Varying sizes from 20px to 80px
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+
+                // Random blue shade
+                const hue = 210;
+                const saturation = Math.random() * 50 + 50; // 50-100%
+                const lightness = Math.random() * 40 + 40; // 40-80%
+                circle.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                circle.style.opacity = Math.random() * 0.5 + 0.3; // Varying opacity
+
+                // Initial random position
+                circle.initialX = Math.random() * window.innerWidth;
+                circle.initialY = Math.random() * window.innerHeight;
+                circle.style.left = `${circle.initialX}px`;
+                circle.style.top = `${circle.initialY}px`;
+
+                // Store current position (for repulsion) and depth (for parallax)
+                circle.currentX = circle.initialX;
+                circle.currentY = circle.initialY;
+                circle.depth = Math.random() * 0.5 + 0.5; // Depth for parallax (0.5 to 1.0)
+
+                circlesContainer.appendChild(circle);
+                circles.push(circle);
+            }
+
+            // Mouse move event for repulsion and parallax
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+            });
+
+            // Animation loop for circles
+            function animateCircles() {
+                requestAnimationFrame(animateCircles);
+
+                circles.forEach(circle => {
+                    const rect = circlesContainer.getBoundingClientRect();
+                    const circleCenterX = circle.currentX + (parseInt(circle.style.width) / 2);
+                    const circleCenterY = circle.currentY + (parseInt(circle.style.height) / 2);
+
+                    // Parallax effect
+                    const parallaxX = (mouseX - window.innerWidth / 2) * 0.02 * circle.depth;
+                    const parallaxY = (mouseY - window.innerHeight / 2) * 0.02 * circle.depth;
+
+                    // Repulsion effect
+                    const dx = mouseX - circleCenterX;
+                    const dy = mouseY - circleCenterY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const repulsionRadius = 150; // Distance at which repulsion starts
+                    const repulsionStrength = 10; // How strong the repulsion is
+
+                    if (distance < repulsionRadius) {
+                        const angle = Math.atan2(dy, dx);
+                        const forceFactor = (repulsionRadius - distance) / repulsionRadius; // Stronger closer to mouse
+
+                        circle.currentX -= Math.cos(angle) * repulsionStrength * forceFactor;
+                        circle.currentY -= Math.sin(angle) * repulsionStrength * forceFactor;
+                    }
+
+                    // Ease back to initial position (damping)
+                    const easeFactor = 0.05;
+                    circle.currentX += (circle.initialX - circle.currentX) * easeFactor;
+                    circle.currentY += (circle.initialY - circle.currentY) * easeFactor;
+
+                    // Apply transform (parallax + current position)
+                    circle.style.transform = `translate(${circle.currentX - circle.initialX + parallaxX}px, ${circle.currentY - circle.initialY + parallaxY}px)`;
+                });
+            }
+
+            // Start circle animation
+            animateCircles();
         });
     </script>
 </body>
