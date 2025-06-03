@@ -219,8 +219,38 @@
         </div>
     </main>
 
-    <footer>
-        &copy; 2025 Z-CAFE Lab, Yale University
+    <!-- Updated Footer Section with Address, Contact, and Yale Logo on the right -->
+    <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
+
+            <!-- Lab Info and Copyright (Left Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-lg font-bold text-gray-100 mb-2">Z-CAFE Lab</p>
+                <p>&copy; 2025 Z-CAFE Lab</p>
+                <p class="text-sm text-gray-400">Yale University</p>
+            </div>
+
+            <!-- Address Section (Middle-Left Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Address</p>
+                <p class="text-sm">493 College Street, Room 409</p>
+                <p class="text-sm">Yale University</p>
+            </div>
+
+            <!-- Contact Information Section (Middle-Right Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Contact</p>
+                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400 transition-colors duration-200">203-436-4181</a></p>
+                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400 transition-colors duration-200">emma.zang@yale.edu</a></p>
+            </div>
+
+            <!-- Yale 'Y' Logo (Rightmost Section) -->
+            <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
+                <svg class="w-12 h-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zM12 6c-2.206 0-4 1.794-4 4v4c0 2.206 1.794 4 4 4s4-1.794 4-4v-4c0-2.206-1.794-4-4-4zM12 8c1.103 0 2 .897 2 2v4c0 1.103-.897 2-2 2s-2-.897-2-2v-4c0-1.103.897-2 2-2z"/>
+                </svg>
+            </div>
+        </div>
     </footer>
 
     <script>
