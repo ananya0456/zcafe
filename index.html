@@ -14,6 +14,7 @@
             color: #333;
             margin: 0;
             overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            padding-top: 64px; /* Add padding to body to prevent content from hiding behind fixed nav */
         }
 
         /* Styles for elements that will animate */
@@ -100,6 +101,14 @@
             border-radius: 50%;
             pointer-events: none; /* Allow mouse events to pass through to elements behind */
             transition: transform 0.1s ease-out; /* Smooth movement */
+        }
+
+        /* Fixed Navigation Bar */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure it stays on top */
         }
     </style>
 </head>
