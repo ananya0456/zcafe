@@ -10,8 +10,8 @@
         /* Custom styles for the Inter font and general layout */
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #f0f2f5; /* Light grey background */
-            color: #333;
+            background-color: #0d1a2f; /* Dark navy background */
+            color: #e2e8f0; /* Lightened default text color for contrast */
             margin: 0;
             overflow-x: hidden; /* Prevent horizontal scroll due to animations */
             padding-top: 64px; /* Add padding to body to prevent content from hiding behind fixed nav */
@@ -38,37 +38,39 @@
 
         /* Specific styles for the primary button to make it stand out */
         .btn-primary {
-            background-color: #3b82f6; /* Blue */
+            background-color: #3b82f6; /* Bright blue */
             color: white;
-            padding: 10px 20px; /* Slightly smaller padding */
-            border-radius: 8px; /* Rounded corners */
+            padding: 10px 20px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
         }
 
         .btn-primary:hover {
             background-color: #2563eb; /* Darker blue on hover */
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
         }
 
         /* Specific styles for the secondary button (for "View Highlights") */
         .btn-secondary {
-            background-color: #e0e7ff; /* Lighter blue */
-            color: #3b82f6; /* Blue text */
+            background-color: #2a63b0; /* Darker blue for secondary button */
+            color: #e0e7ff; /* Lighter blue text */
             padding: 8px 16px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9em; /* Slightly smaller font for secondary button */
-            transition: background-color 0.3s ease, color 0.3s ease;
-            display: inline-block; /* Allows padding and margin */
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .btn-secondary:hover {
-            background-color: #c7d2fe; /* Even lighter blue on hover */
-            color: #2563eb; /* Darker blue text on hover */
+            background-color: #1e4a82; /* Even darker blue on hover */
+            color: #ffffff; /* White text on hover */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer styling */
@@ -83,11 +85,11 @@
 
         /* Header styling for the interactive background */
         header {
-            position: relative; /* Needed for z-index to work on children */
-            overflow: hidden; /* Hide any overflow from circles */
-            background-color: #f0f2f5; /* Fallback background for header */
-            background-image: linear-gradient(to right, #e0e7ff, #eef2ff); /* Re-added gradient to header */
-            /* The header's padding and text-align are already set */
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
+            padding-top: 100px; /* Increased padding to give more visual space */
+            padding-bottom: 100px;
         }
 
         header .max-w-4xl {
@@ -108,7 +110,31 @@
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000; /* Ensure it stays on top */
+            z-index: 1000;
+            background-color: #0d1a2f; /* Dark nav bar background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for fixed nav */
+        }
+
+        .bg-white {
+            background-color: #1a273b; /* Darker card background */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow for cards */
+        }
+
+        .bg-white h3, .bg-white p, .bg-white span {
+            color: #e2e8f0; /* Lighter text color inside dark cards */
+        }
+
+        .bg-white .text-blue-700 { /* Specific text color for card titles */
+            color: #63b3ed; /* Lighter blue for card titles */
+        }
+
+        .bg-white .text-gray-600, .bg-white .text-gray-500 {
+            color: #cbd5e1; /* Lighter text for descriptions in cards */
+        }
+
+        section {
+            padding-bottom: 40px; /* Ensure consistent spacing between sections */
         }
     </style>
 </head>
@@ -154,7 +180,7 @@
 
     <section id="research-highlights" class="py-16 px-4 md:px-8 lg:px-16 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6 animate-on-scroll">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-6 animate-on-scroll">
                 Explore Our Research Highlights
             </h2>
             <div class="grid md:grid-cols-2 gap-6 text-left">
@@ -194,6 +220,38 @@
             <div class="text-center mt-10 animate-on-scroll">
                 <a href="highlights.html" class="btn-secondary">View All Highlights</a>
             </div>
+        </div>
+    </section>
+
+    <!-- New Sponsors Section -->
+    <section id="sponsors" class="py-16 px-4 md:px-8 lg:px-16 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Our Sponsors</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center">
+                <!-- Example Sponsor Placeholder 1 -->
+                <div class="flex flex-col items-center justify-center animate-on-scroll">
+                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+1" alt="Sponsor 1 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
+                    <p class="text-sm text-gray-300">Organization A</p>
+                </div>
+                <!-- Example Sponsor Placeholder 2 -->
+                <div class="flex flex-col items-center justify-center animate-on-scroll">
+                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+2" alt="Sponsor 2 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
+                    <p class="text-sm text-gray-300">Foundation B</p>
+                </div>
+                <!-- Example Sponsor Placeholder 3 -->
+                <div class="flex flex-col items-center justify-center animate-on-scroll">
+                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+3" alt="Sponsor 3 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
+                    <p class="text-sm text-gray-300">University C</p>
+                </div>
+                <!-- Example Sponsor Placeholder 4 -->
+                <div class="flex flex-col items-center justify-center animate-on-scroll">
+                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+4" alt="Sponsor 4 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
+                    <p class="text-sm text-gray-300">Institute D</p>
+                </div>
+            </div>
+            <p class="text-gray-300 text-sm mt-8 animate-on-scroll">
+                We are grateful for the support of our generous sponsors who make our research possible.
+            </p>
         </div>
     </section>
 
