@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z-CAFE Lab - Contact</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font and general layout */
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0d1a2f; /* Dark, deep navy background */
-            /* Added a subtle, tech-inspired dot grid background */
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #0d1a2f;
+            /* Re-added the subtle dot-grid background */
             background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
             background-size: 25px 25px;
-            color: #e2e8f0; /* Light text color for contrast */
+            color: #e2e8f0;
             margin: 0;
             overflow-x: hidden;
             padding-top: 64px;
         }
 
-        /* Styles for elements that will animate */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -31,22 +29,27 @@
             transform: translateY(0);
         }
 
-        /* Delay for sequential animations */
         .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
         .animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
         .animate-on-scroll:nth-child(3) { transition-delay: 0.4s; }
         .animate-on-scroll:nth-child(4) { transition-delay: 0.6s; }
         .animate-on-scroll:nth-child(5) { transition-delay: 0.8s; }
 
-        /* Header Styling */
+        /* --- Header Styling --- */
         header {
-            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
+            position: relative;
+            background: linear-gradient(to right, #1a365d, #0f223f);
             padding-top: 100px;
             padding-bottom: 100px;
             border-bottom: 1px solid #1e293b;
+            overflow: hidden;
+        }
+        header .container {
+            position: relative;
+            z-index: 1;
         }
 
-        /* Fixed Navigation Bar */
+
         .fixed-nav {
             position: fixed;
             top: 0;
@@ -56,23 +59,21 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
         .fixed-nav ul li:not(:first-child) {
-            border-left: 1px solid #374151; /* Darker divider */
+            border-left: 1px solid #374151;
             padding-left: 1rem;
         }
         
-        /* Specific styles for links within contact info */
         .contact-link {
-            color: #60a5fa; /* Light blue for links */
+            color: #60a5fa;
             text-decoration: none;
             transition: color 0.3s ease;
             font-weight: 500;
         }
         .contact-link:hover {
-            color: #93c5fd; /* Even lighter blue on hover */
+            color: #93c5fd;
             text-decoration: underline;
         }
 
-        /* Style for the map container */
         .map-container {
             border-radius: 0.5rem;
             overflow: hidden;
@@ -94,7 +95,7 @@
     </nav>
 
     <header class="text-center py-12 px-4 md:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto">
+        <div class="container max-w-3xl mx-auto">
             <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
                 Get in Touch
             </h1>
@@ -142,7 +143,7 @@
             <div class="animate-on-scroll" style="transition-delay: 0.2s;">
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.589886475583!2d-72.92629688457715!3d41.3182522792705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b5e5a7b219%3A0x6b4c6c3d4a3c1c73!2s210%20Prospect%20St%2C%20New%20Haven%2C%20CT%2006511!5e0!3m2!1sen!2sus!4v1668023456789!5m2!1sen!2sus"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.589886475583!2d-72.92629688457715!3d41.3182522792705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d9b5e5a7b219%3A0x6b4c6c3d4a3c1c73!2s210%20Prospect%2sSt%2C%20New%20Haven%2C%20CT%2006511!5e0!3m2!1sen!2sus!4v1668023456789!5m2!1sen!2sus"
                         width="100%" 
                         height="450" 
                         style="border:0;" 
@@ -181,6 +182,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Scroll Animation Observer ---
             const animateElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
