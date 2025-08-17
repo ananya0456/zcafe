@@ -104,6 +104,44 @@
             padding-left: 1rem; /* Space between the divider and the link */
         }
 
+        /* Team Card Styling for Dark Mode */
+        .team-card {
+            background-color: #1a273b; /* A lighter navy than the body */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+        }
+        .team-card img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .team-card .name-link {
+            color: #d1d5db; /* Light gray for names */
+        }
+        .team-card .name-link:hover {
+            color: #60a5fa; /* Light blue on hover */
+        }
+        .team-card .title {
+            color: #9ca3af; /* Medium gray for title/affiliation */
+        }
+        .team-card .bio {
+            color: #6b7280; /* Darker gray for bio text */
+        }
+        .team-card .website-link {
+            color: #60a5fa;
+        }
+        
+        /* Past Members Card */
+        .past-members-card {
+            background-color: #1a273b;
+            color: #d1d5db;
+        }
+        .past-members-card .font-semibold {
+            color: #e5e7eb; /* Slightly brighter for names */
+        }
+
     </style>
 </head>
 <body>
