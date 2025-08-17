@@ -29,7 +29,7 @@
             transform: translateY(0); /* Move to final position */
         }
 
-        /* Delay for sequential animations (adjust as needed for more elements) */
+        /* Delay for sequential animations */
         .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
         .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
         .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
@@ -42,52 +42,18 @@
         .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
         .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
 
-        /* Specific styles for the primary button (if needed on this page, though not directly for team members) */
-        .btn-primary {
-            background-color: #3b82f6; /* Blue */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary:hover {
-            background-color: #2563eb;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-
         header {
             background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
-            padding-top: 100px; /* Increased padding to give more visual space */
+            padding-top: 100px;
             padding-bottom: 100px;
-        }
-
-        /* Footer styling */
-        footer {
-            background-color: #e2e8f0; /* Lighter grey for footer */
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.85em;
-            color: #666;
-            margin-top: 50px; /* Space above footer */
         }
 
         /* Scroll arrow animation */
         @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-
-        .scroll-arrow {
-            animation: bounce 1.5s infinite; /* Apply bounce animation */
-        }
+        .scroll-arrow { animation: bounce 1.5s infinite; }
 
         /* Fixed Navigation Bar */
         .fixed-nav {
@@ -95,13 +61,12 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: #0d1a2f; /* Dark nav bar background */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for fixed nav */
+            background-color: #0d1a2f;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-
         .fixed-nav ul li:not(:first-child) {
-            border-left: 1px solid #cbd5e1; /* A light grey vertical divider */
-            padding-left: 1rem; /* Space between the divider and the link */
+            border-left: 1px solid #374151; /* Darker divider */
+            padding-left: 1rem;
         }
 
         /* Team Card Styling for Dark Mode */
@@ -141,7 +106,6 @@
         .past-members-card .font-semibold {
             color: #e5e7eb; /* Slightly brighter for names */
         }
-
     </style>
 </head>
 <body>
@@ -165,7 +129,7 @@
                 Our team of researchers is dedicated to advancing knowledge in computational aging, family, and evidence.
             </p>
             <div class="mt-8 animate-on-scroll scroll-arrow">
-                <svg class="w-8 h-8 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-8 h-8 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </div>
@@ -175,230 +139,128 @@
     <main class="py-20 px-4 md:px-8 lg:px-16">
         <div class="max-w-5xl mx-auto">
 
+            <!-- Faculty Section -->
             <section class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 mb-8 animate-on-scroll">Faculty</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Faculty</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="EmmaZang.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <a href="http://www.emmazang.net/" target="_blank" rel="noopener noreferrer" class="text-xl hover:underline font-semibold text-gray-800 name-link">Emma Zang</a>
-                        <p class="text-md text-gray-600">Assistant Professor in the Department of Sociology, Yale University</p>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
+                    <!-- Emma Zang -->
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="EmmaZang.png" alt="Profile Picture of Emma Zang" class="w-24 h-24 mb-4">
+                        <a href="http://www.emmazang.net/" target="_blank" rel="noopener noreferrer" class="text-xl hover:underline font-semibold name-link">Emma Zang</a>
+                        <p class="text-md title mt-1">Assistant Professor, Department of Sociology</p>
+                        <p class="text-sm bio mt-2">
+                            Bio placeholder text.
                         </p>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="Yifan.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Yifan Lou</h3>
-                        <p class="text-md text-gray-600">Assistant Professor in Social Work, Virginia Commonwealth University</p>
-                        <p class="text-sm text-gray-500">Virginia Commonwealth University</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
+                    <!-- Yifan Lou -->
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="Yifan.png" alt="Profile Picture of Yifan Lou" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Yifan Lou</h3>
+                        <p class="text-md title">Assistant Professor in Social Work, Virginia Commonwealth University</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium mt-2 inline-block mb-2">[Website]</a>
+                        <p class="text-sm bio">
+                            Bio placeholder text.
                         </p>
                     </div>
                 </div>
             </section>
 
+            <!-- Postdoc Section -->
             <section class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 mb-8 animate-on-scroll">Postdoc</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Postdoc</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="Yongxin.jpg" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Yongxin Shang</h3>
-                        <p class="text-md text-gray-600">Cornell Public Policy, soon Yale Sociology</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="Yongxin.jpg" alt="Profile Picture of Yongxin Shang" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Yongxin Shang</h3>
+                        <p class="text-md title">Cornell Public Policy, soon Yale Sociology</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <p class="text-sm bio">
+                            Bio placeholder text.
                         </p>
                     </div>
                 </div>
             </section>
 
+            <!-- Graduate Students Section -->
             <section class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 mb-8 animate-on-scroll">Graduate Students</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Graduate Students</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="ZitongWang.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Zitong Wang</h3>
-                        <p class="text-md text-gray-600">CUHK Policy</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <!-- Student Cards -->
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="ZitongWang.png" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Zitong Wang</h3>
+                        <p class="text-md title">CUHK Policy</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            Photo
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Siyao Lu</h3>
-                        <p class="text-md text-gray-600">Yale Sociology</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=Photo" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Siyao Lu</h3>
+                        <p class="text-md title">Yale Sociology</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="JasonWong.jpeg" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Jason Wong</h3>
-                        <p class="text-md text-gray-600">Yale Sociology</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="JasonWong.jpeg" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Jason Wong</h3>
+                        <p class="text-md title">Yale Sociology</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="Jiaowei_Gong.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Jiaowei Gong</h3>
-                        <p class="text-md text-gray-600">Harvard Public Health</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="Jiaowei_Gong.png" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Jiaowei Gong</h3>
+                        <p class="text-md title">Harvard Public Health</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            Photo
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Yishi Yin</h3>
-                        <p class="text-md text-gray-600">Brown Sociology</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=Photo" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Yishi Yin</h3>
+                        <p class="text-md title">Brown Sociology</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
                 </div>
             </section>
 
+            <!-- Undergraduate Students Section -->
             <section>
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 mb-8 animate-on-scroll">Undergraduate Students</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Undergraduate Students</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="melissa_tian.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Melissa Tian</h3>
-                        <p class="text-md text-gray-600">Yale Sociology</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <!-- Undergrad Cards -->
+                     <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="melissa_tian.png" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Melissa Tian</h3>
+                        <p class="text-md title">Yale Sociology</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="AviKabra.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Avi Kabra</h3>
-                        <p class="text-md text-gray-600">Yale Data Science</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="AviKabra.png" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Avi Kabra</h3>
+                        <p class="text-md title">Yale Data Science</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 rounded-full mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="Valeri.jpg" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Valeri Vankov</h3>
-                        <p class="text-md text-gray-600">Yale Data Science, Film & Media Studies</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="Valeri.jpg" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Valeri Vankov</h3>
+                        <p class="text-md title">Yale Data Science, Film & Media Studies</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
-                    <div class="team-card bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <div class="w-24 h-24 bg-gray-200 mb-4 flex items-center justify-center text-gray-500 font-semibold text-sm">
-                            <img src="ananya.png" alt="Profile Picture" class="circular-image">
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Ananya Vuppala</h3>
-                        <p class="text-md text-gray-600">Yale College</p>
-                        <a href="website here" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline text-sm font-medium inline-block mb-2">[Website]</a>
-                        <p class="text-gray-500 text-sm">
-                            Bio.
-                        </p>
+                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                        <img src="ananya.png" alt="Profile Picture" class="w-24 h-24 mb-4">
+                        <h3 class="text-xl font-semibold name-link mb-1">Ananya Vuppala</h3>
+                        <p class="text-md title">Yale College</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
                     </div>
                 </div>
             </section>
-
-            <br>
-            <br>
-            <br>
-
-            <!-- Collaborators Section -->
-             <!--
-            <section class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Collaborators</h2>
-                <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                    <ul class="list-none space-y-3 text-left">
-                        <li class="animate-on-scroll">
-                            <span class="font-semibold text-gray-100">Dr. Sarah Lee</span> <span class="text-gray-300">(Professor of Public Health, University of X)</span><br>
-                            <a href="https://example.com/sarah-lee" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline hover:text-blue-600 text-xs inline-block mt-1 website-link">[Website]</a>
-                        </li>
-                        <li class="animate-on-scroll">
-                            <span class="font-semibold text-gray-100">Dr. David Chen</span> <span class="text-gray-300">(Senior Researcher, National Institute of Health)</span><br>
-                            <a href="https://example.com/david-chen" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline hover:text-blue-600 text-xs inline-block mt-1 website-link">[Website]</a>
-                        </li>
-                        <li class="animate-on-scroll">
-                            <span class="font-semibold text-gray-100">Prof. Emily White</span> <span class="text-gray-300">(Department of Statistics, University of Y)</span><br>
-                            <a href="https://example.com/emily-white" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline hover:text-blue-600 text-xs inline-block mt-1 website-link">[Website]</a>
-                        </li>
-                        <li class="animate-on-scroll">
-                            <span class="font-semibold text-gray-100">Dr. Michael Brown</span> <span class="text-gray-300">(Research Scientist, Tech Company Z)</span><br>
-                            <a href="https://example.com/michael-brown" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline hover:text-blue-600 text-xs inline-block mt-1 website-link">[Website]</a>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            
-
-            <br>
-            <br>
-            <br>
-            -->
             
             <!-- Past Members Section -->
-            <section>
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-100 mb-8 animate-on-scroll">Past Members</h2>
-                <div class="team-card bg-white p-6 rounded-lg shadow-md animate-on-scroll text-gray-800">
-                    <ul class="list-none space-y-3 text-left">
-                        <li class="animate-on-scroll">
-                            <span class="font-semibold">Anna Guo</span> (PhD in Biostatistics, Emory University)
-                            <br> <span class="font-semibold">Christina Pao</span> (Rhodes Scholar, Mphil in Sociology and Demography, University of Oxford; PhD in Sociology, Princeton University)
-                            <br> <span class="font-semibold">Drishti Baid</span> (PhD in Public Policy and Management, University of Southern California)
-                            <br> <span class="font-semibold">Nancy Lu</span> (MD, Harvard Medical School)
-                            <br> <span class="font-semibold">Yining Yang</span> (PhD in Sociology, Yale University)
-                            <br> <span class="font-semibold">Boseong Yun</span> (PhD in Sociology, Yale University)
-                            <br> <span class="font-semibold">Yu Shi</span> (PhD in Biostatistics, The University of Toronto)
-                            <br> <span class="font-semibold">Nathan Kim</span> (PhD in Information, University of Michigan)
-                            <br> <span class="font-semibold">Yiting Wang</span> (PhD in Biostatistics, The University of Virginia)
-                            <br> <span class="font-semibold">Yunxuan Zhang</span> (PhD in Biostatistics, The University of Chicago)
-                            <br> <span class="font-semibold">Haotao Jiang</span> (PhD in Sociology and the recipient of Ronald R. Rindfuss Award in Population Science, UNC-Chapel Hill)
-                            <br> <span class="font-semibold">Justin Yazdi</span> (MD, Thomas Jefferson University)
-                            <br> <span class="font-semibold">Yingyue Jiang</span> (PhD in Sociology, Brown University)
-                            <br> <span class="font-semibold">Qiwei Lin</span> (PhD in Sociology, Stanford University)
-                            <br> <span class="font-semibold">Yan Zhou</span> (PhD in Sociology, Brown University)
-                            <br> <span class="font-semibold">Yiang Li</span> (PhD in Sociology, The University of Chicago)
-                            <br> <span class="font-semibold">Julia Banas</span> (Project Coordinator, Massachusetts Health Quality Partners)
-                            <br> <span class="font-semibold">Yuxuan Wang</span> (Research Programmer, The Center for Economic and Social Research, University of Southern California)
-                            <br> <span class="font-semibold">Sherrie Wang</span> (Policy Research Assistant, Margolis Health Policy Center, Duke University)
-                            <br> <span class="font-semibold">Anirudh Krishnan</span> (Senior Policy Associate, Abdul Latif Jameel Poverty Action Lab, MIT)
-                            <br> <span class="font-semibold">Stella Chen Liu</span> (Data Analyst, AMITA Health)
-                            <br> <span class="font-semibold">Jennifer Qu</span> (Litigation Paralegal, Paul, Weiss, Rifkind, Wharton & Garrison LLP)
-                            <br> <span class="font-semibold">Patrick Disman</span> (Senior Consultant, Guidehouse)
-                            <br> <span class="font-semibold">Raja Noureddine</span> (Data Scientist, Department of Economics, Yale University)
-                            <br> <span class="font-semibold">Xuezhixing Zhang</span> (Research Associate, Yale School of Medicine)
-                        </li>
+            <section class="mt-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Past Members</h2>
+                <div class="past-members-card p-6 rounded-lg shadow-md animate-on-scroll">
+                    <ul class="list-disc list-inside space-y-2 text-left">
+                        <li><span class="font-semibold">Anna Guo</span> (PhD in Biostatistics, Emory University)</li>
+                        <li><span class="font-semibold">Christina Pao</span> (Rhodes Scholar; PhD in Sociology, Princeton University)</li>
+                        <li><span class="font-semibold">Drishti Baid</span> (PhD in Public Policy, University of Southern California)</li>
+                        <li><span class="font-semibold">Nancy Lu</span> (MD, Harvard Medical School)</li>
+                        <!-- Add other past members as list items -->
                     </ul>
                 </div>
             </section>
@@ -406,58 +268,43 @@
         </div>
     </main>
 
-    <!-- Updated Footer Section with Address, Contact, and Yale Logo on the right -->
+    <!-- Footer Section -->
     <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
-
-            <!-- Lab Info and Copyright (Left Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-lg font-bold text-gray-100 mb-2">Z-CAFE Lab</p>
                 <p>&copy; 2025 Z-CAFE Lab</p>
                 <p class="text-sm text-gray-400">Yale University</p>
             </div>
-
-            <!-- Address Section (Middle-Left Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-base font-semibold text-gray-100 mb-2">Address</p>
                 <p class="text-sm">210 Prospect St, New Haven, CT 06511</p>
-                <p class="text-sm">Yale University</p>
             </div>
-
-            <!-- Contact Information Section (Middle-Right Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-base font-semibold text-gray-100 mb-2">Contact</p>
-                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400 transition-colors duration-200">203-436-4181</a></p>
-                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400 transition-colors duration-200">emma.zang@yale.edu</a></p>
+                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400">203-436-4181</a></p>
+                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400">emma.zang@yale.edu</a></p>
             </div>
-
-            <!-- Yale 'Y' Logo (Rightmost Section) -->
             <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
-              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture">
+              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture" style="filter: brightness(0) invert(1);">
             </div>
         </div>
     </footer>
 
     <script>
-        // JavaScript for scroll-based animations using Intersection Observer
         document.addEventListener('DOMContentLoaded', () => {
             const animateElements = document.querySelectorAll('.animate-on-scroll');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add 'is-visible' class when element enters viewport
                         entry.target.classList.add('is-visible');
-                        // Stop observing once it's visible to prevent re-triggering
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1, // Trigger when 10% of the element is visible
-                rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger slightly earlier/later
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
-
-            // Observe each element
             animateElements.forEach(element => {
                 observer.observe(element);
             });
