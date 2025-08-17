@@ -7,11 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font and general layout */
+        /* Custom styles for the Montserrat font and consistent layout */
         body {
-            font-family: 'Monsterrat', sans-serif;
-            background-color: #0d1a2f; /* Dark navy background */
-            color: #e2e8f0; /* Lightened default text color for contrast */
+            font-family: 'Montserrat', sans-serif; /* Corrected typo: 'Monsterrat' to 'Montserrat' */
+            background-color: #0d1a2f; /* Dark navy background from index.html */
+            color: #e2e8f0; /* Lightened default text color for contrast from index.html */
             margin: 0;
             overflow-x: hidden; /* Prevent horizontal scroll due to animations */
             padding-top: 64px; /* Add padding to body to prevent content from hiding behind fixed nav */
@@ -42,48 +42,56 @@
         .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
         .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
 
-        /* Specific styles for the primary button */
+        /* Specific styles for the primary button (if you decide to add one to this page) */
         .btn-primary {
-            background-color: #3b82f6; /* Blue */
+            background-color: #3b82f6; /* Bright blue from index.html */
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow from index.html */
         }
 
         .btn-primary:hover {
-            background-color: #2563eb;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            background-color: #2563eb; /* Darker blue on hover from index.html */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover from index.html */
         }
 
-        /* Footer styling */
+        /* Footer styling - adjusted to match index.html footer */
         footer {
-            background-color: #e2e8f0; /* Lighter grey for footer */
-            padding: 20px 0;
+            background-color: #1a273b; /* Darker gray from index.html footer */
+            padding: 40px 0; /* Increased padding for consistency */
             text-align: center;
             font-size: 0.85em;
-            color: #666;
+            color: #e2e8f0; /* Lighter text color for contrast */
             margin-top: 50px; /* Space above footer */
         }
 
-        /* Scroll arrow animation (if you decide to add one to this page) */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+        /* Header styling for highlights page - consistent with index.html */
+        header {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient from index.html header */
+            padding-top: 100px; /* Consistent padding from index.html */
+            padding-bottom: 100px; /* Consistent padding from index.html */
         }
 
-        .scroll-arrow {
-            animation: bounce 1.5s infinite; /* Apply bounce animation */
+        header .max-w-3xl { /* Changed to 3xl for this page, but inherited styling is similar */
+            position: relative;
+            z-index: 1; /* Ensure text content is above */
         }
 
-        /* Fixed Navigation Bar */
+        header h1 {
+            color: #e2e8f0; /* Light text for header title */
+        }
+
+        header p {
+            color: #cbd5e1; /* Lighter text for header description */
+        }
+
+        /* Fixed Navigation Bar - already consistent */
         .fixed-nav {
             position: fixed;
             top: 0;
@@ -98,6 +106,41 @@
             padding-left: 1rem; /* Space between the divider and the link */
         }
 
+        /* Card background and text colors - consistent with index.html */
+        .bg-white { /* Renamed to .highlight-card for clarity, but kept .bg-white for existing usage */
+            background-color: #1a273b; /* Darker card background from index.html */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow for cards */
+        }
+
+        .bg-white h3, .bg-white p, .bg-white span {
+            color: #e2e8f0; /* Lighter text color inside dark cards */
+        }
+
+        .bg-white .text-blue-800 { /* Specific text color for section heading */
+            color: #63b3ed; /* Lighter blue for titles */
+        }
+
+        .bg-white .text-gray-600, .bg-white .text-gray-500 {
+            color: #cbd5e1; /* Lighter text for descriptions in cards */
+        }
+
+        .text-blue-600 { /* For links inside cards */
+            color: #63b3ed; /* Lighter blue for links */
+        }
+
+        section h2 { /* For main section headings on this page */
+            color: #e2e8f0; /* Consistent with index.html heading color */
+        }
+
+        /* Footer content text alignment (adjusting for flexbox) */
+        footer .text-sm {
+            color: #cbd5e1; /* Consistent lighter gray for footer details */
+        }
+
+        footer a {
+            color: #63b3ed; /* Consistent link color in footer */
+        }
     </style>
 </head>
 <body>
@@ -112,21 +155,15 @@
         </ul>
     </nav>
 
-    <header class="text-center py-12 px-4 md:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <header class="text-center py-16 px-4 md:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto">
-            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-800 mb-3 animate-on-scroll">
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
                 Lab Highlights
             </h1>
-            <p class="text-md md:text-lg text-gray-600 mb-8 animate-on-scroll">
+            <p class="text-md md:text-lg text-gray-300 mb-8 animate-on-scroll">
                 Celebrating our achievements, news, and notable contributions to the field.
             </p>
-            <!--
-            <div class="mt-8 animate-on-scroll scroll-arrow">
-                <svg class="w-8 h-8 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
-            </div>
-            -->
+            <!-- Scroll arrow can be re-added if desired for consistency -->
         </div>
     </header>
 
@@ -134,10 +171,10 @@
         <div class="max-w-5xl mx-auto">
 
             <section class="mb-16">
-                <h2 class="text-2xl md:text-3xl font-bold text-blue-800 mb-8 animate-on-scroll">Recent News & Achievements</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Recent News & Achievements</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">YaleNews | Juggling act: New insights into parenting during the pandemic</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">YaleNews | Juggling act: New insights into parenting during the pandemic</h3>
                         <p class="text-gray-600 mb-4">
                             A dramatic shift toward remote work caused telecommuting parents in the U.S., particularly mothers, to spend significantly more time “parenting” their children.
                         </p>
@@ -145,7 +182,7 @@
                         <a href="https://news.yale.edu/2022/12/13/juggling-act-new-insights-parenting-during-pandemic?fbclid=IwAR2s9D_eV2kd1tKuC0w8XBbs7MD3i2chFVAKFDGA1IEOp-nYspVKA4DNxJw" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Cornell Chronicle | Pandemic put more parenting stress on mothers</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Cornell Chronicle | Pandemic put more parenting stress on mothers</h3>
                         <p class="text-gray-600 mb-4">
                             A first-of-its-kind study of parents’ work arrangements during the pandemic shows that mothers working from home increased their supervisory parenting fully two hours more than fathers did, and women were also more likely to adapt their work schedules to new parenting demands.
                         </p>
@@ -153,7 +190,7 @@
                         <a href="https://news.cornell.edu/stories/2023/01/pandemic-put-more-parenting-stress-mothers" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">YaleNews | Study shows effects of Chinese divorce law on women’s wellbeing</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">YaleNews | Study shows effects of Chinese divorce law on women’s wellbeing</h3>
                         <p class="text-gray-600 mb-4">
                             New Yale research examines how a 2011 Supreme Court ruling in China harms women’s property rights — and how some couples work together to mitigate that harm.
                         </p>
@@ -161,7 +198,7 @@
                         <a href="https://news.yale.edu/2020/01/24/study-shows-effects-chinese-divorce-law-womens-wellbeing?fbclid=IwAR0nU5LQtF54VFpafcAgLz-zNg8TKGiwA71XBII_Y_WQdWpgby5iHkEwMY0" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Emma Zang talks about the impact of Chinese divorce reform</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Emma Zang talks about the impact of Chinese divorce reform</h3>
                         <p class="text-gray-600 mb-4">
                             Professor Zang’s research interests lie at the intersection of health and aging, marriage and family, and inequality. She is particularly interested in developing and evaluating methods to model trajectories and life transitions in order to better understand how...
                         </p>
@@ -169,7 +206,7 @@
                         <a href="https://www.youtube.com/watch?v=_fJjCygPUu8" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">中国家庭｜因房价触发的“门当户对”</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">中国家庭｜因房价触发的“门当户对”</h3>
                         <p class="text-gray-600 mb-4">
                             在中国人的观念里，“家”往往跟房子紧密结合在一起，结婚和买房之间也自然的联结在一起。
                         </p>
@@ -177,31 +214,13 @@
                         <a href="https://www.thepaper.cn/newsDetail_forward_7247402" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Title Here</h3>
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Title Here</h3>
                         <p class="text-gray-600 mb-4">
                             Description here.
                         </p>
                         <span class="text-sm text-gray-500">Date: [Date Here]</span>
                         <a href="LINK" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
                     </div>
-                    <!--
-                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Title Here</h3>
-                        <p class="text-gray-600 mb-4">
-                            Description here.
-                        </p>
-                        <span class="text-sm text-gray-500">Date: [Date Here]</span>
-                        <a href="LINK" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Title Here</h3>
-                        <p class="text-gray-600 mb-4">
-                            Description here.
-                        </p>
-                        <span class="text-sm text-gray-500">Date: [Date Here]</span>
-                        <a href="LINK" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
-                    </div>
-                    -->
                 </div>
             </section>
 
@@ -235,7 +254,7 @@
 
             <!-- Yale 'Y' Logo (Rightmost Section) -->
             <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
-              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture">
+              <img src="https://placehold.co/100x200/f0f9ff/0f172a?text=Yale+Logo" width="100" height="200" alt="Yale Picture">
             </div>
         </div>
     </footer>
