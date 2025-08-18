@@ -5,146 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z-CAFE Lab - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font and general layout */
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            background-color: #0d1a2f; /* Dark navy background */
-            color: #e2e8f0; /* Lightened default text color for contrast */
+            background-color: #0d1a2f;
+            color: #e2e8f0;
             margin: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
-            padding-top: 64px; /* Add padding to body to prevent content from hiding behind fixed nav */
+            overflow-x: hidden;
+            padding-top: 64px;
         }
 
-        /* Styles for elements that will animate */
         .animate-on-scroll {
-            opacity: 0; /* Start invisible */
-            transform: translateY(20px); /* Start slightly below its final position */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
         .animate-on-scroll.is-visible {
-            opacity: 1; /* Fade in */
-            transform: translateY(0); /* Move to final position */
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        /* Delay for sequential animations */
+        
         .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
         .animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
         .animate-on-scroll:nth-child(3) { transition-delay: 0.4s; }
         .animate-on-scroll:nth-child(4) { transition-delay: 0.6s; }
         .animate-on-scroll:nth-child(5) { transition-delay: 0.8s; }
 
-        /* Specific styles for the primary button to make it stand out */
         .btn-primary {
-            background-color: #3b82f6; /* Bright blue */
+            background-color: #3b82f6;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
-        }
-
-        .btn-primary:hover {
-            background-color: #2563eb; /* Darker blue on hover */
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover */
-        }
-
-        /* Specific styles for the secondary button (for "View Highlights") */
-        .btn-secondary {
-            background-color: #2a63b0; /* Darker blue for secondary button */
-            color: #e0e7ff; /* Lighter blue text */
-            padding: 8px 16px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background-color: #1e4a82; /* Even darker blue on hover */
-            color: #ffffff; /* White text on hover */
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-
-        /* Footer styling */
-        footer {
-            background-color: #e2e8f0; /* Lighter grey for footer */
-            padding: 20px 0;
-            text-align: center;
-            font-size: 0.85em; /* Slightly smaller footer font */
-            color: #666;
-            margin-top: 50px; /* Space above footer */
+        .btn-primary:hover {
+            background-color: #2563eb;
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
         }
 
-        /* Header styling for the interactive background */
+        .btn-secondary {
+            background-color: transparent;
+            color: #60a5fa;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid #3b82f6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+
+        /* --- Header with Hexagon & Wave Animation --- */
         header {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
-            padding-top: 100px; /* Increased padding to give more visual space */
-            padding-bottom: 100px;
+            background-color: #0d1a2f;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-
-        header .max-w-4xl {
-            position: relative;
-            z-index: 1; /* Ensure text content is above the circles */
-        }
-
-        /* Styles for the interactive circles */
-        .interactive-circle {
+        #header-canvas {
             position: absolute;
-            border-radius: 50%;
-            pointer-events: none; /* Allow mouse events to pass through to elements behind */
-            transition: transform 0.1s ease-out; /* Smooth movement */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .header-content {
+            position: relative;
+            z-index: 2; /* Make sure content is above the fade */
+        }
+        /* Gradient fade at the bottom of the header */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; /* Adjust height of the fade */
+            background: linear-gradient(to top, #0d1a2f, transparent);
+            z-index: 1; /* Position fade between canvas and content */
         }
 
-        /* Fixed Navigation Bar */
         .fixed-nav {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            background-color: #0d1a2f; /* Dark nav bar background */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for fixed nav */
+            background-color: #0d1a2f;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-
         .fixed-nav ul li:not(:first-child) {
-            border-left: 1px solid #374151; /* A light grey vertical divider */
-            padding-left: 1rem; /* Space between the divider and the link */
+            border-left: 1px solid #374151;
+            padding-left: 1rem;
         }
 
-        .bg-white {
-            background-color: #1a273b; /* Darker card background */
-            border-radius: 8px; /* Consistent rounded corners */
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow for cards */
+        /* --- Research Card Styling --- */
+        .research-card {
+            background-color: #1a273b;
+            border: 1px solid #2d3748;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-
-        .bg-white h3, .bg-white p, .bg-white span {
-            color: #000000; /* Lighter text color inside dark cards */
+        .research-card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
         }
-
-        .bg-white .text-blue-700 { /* Specific text color for card titles */
-            color: #3b82f6; /* Lighter blue for card titles */
+        .research-card h3 {
+            color: #93c5fd;
         }
-
-        .bg-white .text-gray-600, .bg-white .text-gray-500 {
-            color: #000000; /* Lighter text for descriptions in cards */
-        }
-
-        section {
-            padding-bottom: 40px; /* Ensure consistent spacing between sections */
+        .research-card p {
+            color: #a0aec0;
         }
     </style>
 </head>
 <body>
-    <nav class="fixed-nav py-4 px-6 flex justify-between items-center">
+    <nav class="fixed-nav py-4 px-6 flex justify-between items-center text-white">
         <div class="text-lg font-bold">Z-CAFE</div>
         <ul class="flex space-x-5">
             <li><a href="index.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Home</a></li>
@@ -155,251 +138,268 @@
         </ul>
     </nav>
 
-    <header class="text-center py-16 px-4 md:px-8 lg:px-16">
-        <div id="interactive-circles-container" class="absolute inset-0 z-0"></div>
-
-        <div class="max-w-4xl mx-auto">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
+    <header class="text-center px-4 md:px-8 lg:px-16">
+        <canvas id="header-canvas"></canvas>
+        <div class="header-content max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-100 mb-4 animate-on-scroll">
                 Computational Aging, Family, and Evidence
             </h1>
-            <br>
-            <br>
-            <p class="text-lg md:text-xl text-gray-300 mb-8 animate-on-scroll">
+            <p class="text-lg md:text-xl text-gray-300 mb-10 animate-on-scroll">
                 Bringing data science to health, aging, and inequality research.
             </p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
             <a href="research.html" class="btn-primary inline-block text-base animate-on-scroll">Our Research</a>
-            <br>
-            <br>
-            <br>
         </div>
     </header>
 
-    <section id="research-highlights" class="py-16 px-4 md:px-8 lg:px-16 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-6 animate-on-scroll">
+    <section id="research-highlights" class="py-20 px-4 md:px-8 lg:px-16 text-center">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-12 animate-on-scroll">
                 Explore Our Research Highlights
             </h2>
-            <div class="grid md:grid-cols-2 gap-6 text-left">
-                <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Alpha: Longevity Data Analysis</h3>
-                        <p class="text-sm text-gray-600">
-                            Investigating long-term health trends using large-scale demographic datasets and advanced statistical models.
-                        </p>
-                    </div>
-                    </div>
-                <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Beta: Family Dynamics & Health Outcomes</h3>
-                        <p class="text-sm text-gray-600">
-                            Analyzing the impact of family structures and intergenerational relationships on health and well-being.
-                        </p>
-                    </div>
-                    </div>
-                <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Gamma: Inequality in Healthcare Access</h3>
-                        <p class="text-sm text-gray-600">
-                            Examining disparities in healthcare access and outcomes across different socioeconomic groups.
-                        </p>
-                    </div>
-                    </div>
-                <div class="bg-white p-5 rounded-lg shadow-md animate-on-scroll flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-blue-700 mb-2">Project Delta: Evidence-Based Policy Making</h3>
-                        <p class="text-sm text-gray-600">
-                            Developing tools and frameworks to translate research findings into actionable policy recommendations.
-                        </p>
-                    </div>
-                    </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+                <!-- Card 1 -->
+                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll">
+                    <h3 class="text-lg font-semibold mb-2">Longevity Data Analysis</h3>
+                    <p class="text-sm">
+                        Investigating health trends using large-scale demographic datasets and advanced statistical models.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.2s;">
+                    <h3 class="text-lg font-semibold mb-2">Family Dynamics</h3>
+                    <p class="text-sm">
+                        Analyzing the impact of family structures on health and well-being across generations.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.4s;">
+                    <h3 class="text-lg font-semibold mb-2">Healthcare Inequality</h3>
+                    <p class="text-sm">
+                        Examining disparities in healthcare access and outcomes across different socioeconomic groups.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.6s;">
+                    <h3 class="text-lg font-semibold mb-2">Evidence-Based Policy</h3>
+                    <p class="text-sm">
+                        Developing tools to translate research findings into actionable policy recommendations.
+                    </p>
+                </div>
             </div>
-            <div class="text-center mt-10 animate-on-scroll">
+            <div class="text-center mt-12 animate-on-scroll">
                 <a href="highlights.html" class="btn-secondary">View All Highlights</a>
             </div>
         </div>
     </section>
 
-    <!-- New Sponsors Section -->
-    <section id="sponsors" class="py-16 px-4 md:px-8 lg:px-16 text-center">
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="py-16 px-4 md:px-8 lg:px-16 text-center bg-gray-900 bg-opacity-30">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Our Sponsors</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-center">
-                <!-- Example Sponsor Placeholder 1 -->
-                <div class="flex flex-col items-center justify-center animate-on-scroll">
-                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+1" alt="Sponsor 1 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <p class="text-sm text-gray-300">Organization A</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-12 animate-on-scroll">Our Sponsors</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-center">
+                <div class="animate-on-scroll">
+                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+1" alt="Sponsor 1 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
                 </div>
-                <!-- Example Sponsor Placeholder 2 -->
-                <div class="flex flex-col items-center justify-center animate-on-scroll">
-                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+2" alt="Sponsor 2 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <p class="text-sm text-gray-300">Foundation B</p>
+                <div class="animate-on-scroll" style="transition-delay: 0.2s;">
+                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+2" alt="Sponsor 2 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
                 </div>
-                <!-- Example Sponsor Placeholder 3 -->
-                <div class="flex flex-col items-center justify-center animate-on-scroll">
-                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+3" alt="Sponsor 3 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <p class="text-sm text-gray-300">University C</p>
+                <div class="animate-on-scroll" style="transition-delay: 0.4s;">
+                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+3" alt="Sponsor 3 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
                 </div>
-                <!-- Example Sponsor Placeholder 4 -->
-                <div class="flex flex-col items-center justify-center animate-on-scroll">
-                    <img src="https://placehold.co/120x60/f0f2f5/2a4365?text=Sponsor+4" alt="Sponsor 4 Logo" class="max-w-full h-auto mb-2 filter grayscale hover:grayscale-0 transition-all duration-300">
-                    <p class="text-sm text-gray-300">Institute D</p>
+                <div class="animate-on-scroll" style="transition-delay: 0.6s;">
+                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+4" alt="Sponsor 4 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
                 </div>
             </div>
-            <p class="text-gray-300 text-sm mt-8 animate-on-scroll">
-                We are grateful for the support of our generous sponsors who make our research possible.
-            </p>
         </div>
     </section>
 
-    <!-- Updated Footer Section with Address, Contact, and Yale Logo on the right -->
+    <!-- Footer -->
     <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
-
-            <!-- Lab Info and Copyright (Left Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-lg font-bold text-gray-100 mb-2">Z-CAFE Lab</p>
                 <p>&copy; 2025 Z-CAFE Lab</p>
                 <p class="text-sm text-gray-400">Yale University</p>
             </div>
-
-            <!-- Address Section (Middle-Left Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-base font-semibold text-gray-100 mb-2">Address</p>
                 <p class="text-sm">210 Prospect St, New Haven, CT 06511</p>
-                <p class="text-sm">Yale University</p>
             </div>
-
-            <!-- Contact Information Section (Middle-Right Section) -->
             <div class="flex-1 text-center md:text-left">
                 <p class="text-base font-semibold text-gray-100 mb-2">Contact</p>
-                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400 transition-colors duration-200">203-436-4181</a></p>
-                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400 transition-colors duration-200">emma.zang@yale.edu</a></p>
+                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400">203-436-4181</a></p>
+                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400">emma.zang@yale.edu</a></p>
             </div>
-
-            <!-- Yale 'Y' Logo (Rightmost Section) -->
             <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
-              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture">
+              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture" style="filter: brightness(0) invert(1);">
             </div>
         </div>
     </footer>
 
     <script>
-        // JavaScript for scroll-based animations using Intersection Observer
         document.addEventListener('DOMContentLoaded', () => {
+            // Scroll-based animations
             const animateElements = document.querySelectorAll('.animate-on-scroll');
-
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Add 'is-visible' class when element enters viewport
                         entry.target.classList.add('is-visible');
-                        // Stop observing once it's visible to prevent re-triggering
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.1, // Trigger when 10% of the element is visible
-                rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger slightly earlier/later
+            }, { threshold: 0.1 });
+            animateElements.forEach(element => observer.observe(element));
+
+            // --- Hexagon and Wave Animation ---
+            const canvas = document.getElementById('header-canvas');
+            const ctx = canvas.getContext('2d');
+            let hexagons = [];
+            let waveParticles = [];
+            let frame = 0;
+            const mouse = { x: undefined, y: undefined };
+
+            function resizeCanvas() {
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                init();
+            }
+            window.addEventListener('resize', resizeCanvas);
+            
+            window.addEventListener('mousemove', (event) => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = event.clientX - rect.left;
+                mouse.y = event.clientY - rect.top;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = undefined;
+                mouse.y = undefined;
             });
 
-            // Observe each element
-            animateElements.forEach(element => {
-                observer.observe(element);
-            });
-
-            // --- Interactive 2D Circles with Repulsion and Parallax ---
-            const circlesContainer = document.getElementById('interactive-circles-container');
-            const numCircles = 30; // Number of circles
-            const circles = [];
-            let mouseX = 0;
-            let mouseY = 0;
-
-            // Generate circles
-            for (let i = 0; i < numCircles; i++) {
-                const circle = document.createElement('div');
-                circle.classList.add('interactive-circle');
-
-                const size = Math.random() * 60 + 20; // Varying sizes from 20px to 80px
-                circle.style.width = `${size}px`;
-                circle.style.height = `${size}px`;
-
-                // Random blue shade
-                const hue = 210;
-                const saturation = Math.random() * 50 + 50; // 50-100%
-                const lightness = Math.random() * 40 + 40; // 40-80%
-                circle.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-                circle.style.opacity = Math.random() * 0.5 + 0.3; // Varying opacity
-
-                // Initial random position
-                circle.initialX = Math.random() * window.innerWidth;
-                circle.initialY = Math.random() * window.innerHeight;
-                circle.style.left = `${circle.initialX}px`;
-                circle.style.top = `${circle.initialY}px`;
-
-                // Store current position (for repulsion) and depth (for parallax)
-                circle.currentX = circle.initialX;
-                circle.currentY = circle.initialY;
-                circle.depth = Math.random() * 0.5 + 0.5; // Depth for parallax (0.5 to 1.0)
-
-                circlesContainer.appendChild(circle);
-                circles.push(circle);
+            // Helper to draw hexagons
+            function drawHexagon(x, y, size, color) {
+                ctx.beginPath();
+                for (let i = 0; i < 6; i++) {
+                    ctx.lineTo(x + size * Math.cos(i * Math.PI / 3), y + size * Math.sin(i * Math.PI / 3));
+                }
+                ctx.closePath();
+                ctx.fillStyle = color;
+                ctx.fill();
             }
 
-            // Mouse move event for repulsion and parallax
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-            });
-
-            // Animation loop for circles
-            function animateCircles() {
-                requestAnimationFrame(animateCircles);
-
-                circles.forEach(circle => {
-                    const rect = circlesContainer.getBoundingClientRect();
-                    const circleCenterX = circle.currentX + (parseInt(circle.style.width) / 2);
-                    const circleCenterY = circle.currentY + (parseInt(circle.style.height) / 2);
-
-                    // Parallax effect
-                    const parallaxX = (mouseX - window.innerWidth / 2) * 0.02 * circle.depth;
-                    const parallaxY = (mouseY - window.innerHeight / 2) * 0.02 * circle.depth;
-
-                    // Repulsion effect
-                    const dx = mouseX - circleCenterX;
-                    const dy = mouseY - circleCenterY;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    const repulsionRadius = 150; // Distance at which repulsion starts
-                    const repulsionStrength = 10; // How strong the repulsion is
-
-                    if (distance < repulsionRadius) {
-                        const angle = Math.atan2(dy, dx);
-                        const forceFactor = (repulsionRadius - distance) / repulsionRadius; // Stronger closer to mouse
-
-                        circle.currentX -= Math.cos(angle) * repulsionStrength * forceFactor;
-                        circle.currentY -= Math.sin(angle) * repulsionStrength * forceFactor;
+            class Hexagon {
+                constructor(x, y, size, speed, opacity) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.speed = speed;
+                    this.opacity = opacity;
+                    this.originalX = x;
+                    this.originalY = y;
+                }
+                update() {
+                    this.y -= this.speed;
+                    if (this.y < -this.size) {
+                        this.y = canvas.height + this.size;
+                        this.x = Math.random() * canvas.width;
                     }
 
-                    // Ease back to initial position (damping)
-                    const easeFactor = 0.05;
-                    circle.currentX += (circle.initialX - circle.currentX) * easeFactor;
-                    circle.currentY += (circle.initialY - circle.currentY) * easeFactor;
-
-                    // Apply transform (parallax + current position)
-                    circle.style.transform = `translate(${circle.currentX - circle.initialX + parallaxX}px, ${circle.currentY - circle.initialY + parallaxY}px)`;
-                });
+                    // Mouse interaction
+                    if (mouse.x !== undefined) {
+                        const dx = this.x - mouse.x;
+                        const dy = this.y - mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 100) {
+                            this.x += (this.x - mouse.x) * 0.02;
+                            this.y += (this.y - mouse.y) * 0.02;
+                        }
+                    }
+                }
+                draw() {
+                    drawHexagon(this.x, this.y, this.size, `rgba(59, 130, 246, ${this.opacity})`);
+                }
+            }
+            
+            function connectHexagons() {
+                for (let a = 0; a < hexagons.length; a++) {
+                    for (let b = a; b < hexagons.length; b++) {
+                        const dist = Math.hypot(hexagons[a].x - hexagons[b].x, hexagons[a].y - hexagons[b].y);
+                        if (dist < 200) { // Connection distance
+                            ctx.save();
+                            ctx.globalAlpha = 1 - (dist / 200);
+                            ctx.beginPath();
+                            ctx.setLineDash([2, 5]); // Dotted line style
+                            ctx.moveTo(hexagons[a].x, hexagons[a].y);
+                            ctx.lineTo(hexagons[b].x, hexagons[b].y);
+                            ctx.strokeStyle = "rgba(96, 165, 250, 0.2)";
+                            ctx.stroke();
+                            ctx.restore();
+                        }
+                    }
+                }
             }
 
-            // Start circle animation
-            animateCircles();
+            function init() {
+                hexagons = [];
+                waveParticles = [];
+                // Create drifting hexagons
+                for (let i = 0; i < 50; i++) {
+                    const size = Math.random() * 30 + 10;
+                    const x = Math.random() * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const speed = Math.random() * 0.3 + 0.1;
+                    const opacity = Math.random() * 0.2 + 0.05;
+                    hexagons.push(new Hexagon(x, y, size, speed, opacity));
+                }
+                // Create wave particles
+                for (let i = 0; i < canvas.width / 5; i++) {
+                    waveParticles.push({ x: i * 5, y: canvas.height / 2 });
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Animate hexagons and connect them
+                hexagons.forEach(hex => hex.update());
+                connectHexagons();
+                hexagons.forEach(hex => hex.draw());
+
+
+                // Animate data wave
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height / 2);
+                for (let i = 0; i < waveParticles.length; i++) {
+                    let p = waveParticles[i];
+                    let waveHeight = 20;
+                    let mouseInfluence = 0;
+
+                    if (mouse.x !== undefined && mouse.y !== undefined) {
+                        const dx = p.x - mouse.x;
+                        const dy = (canvas.height / 2) - mouse.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            mouseInfluence = (150 - dist) * 0.5;
+                        }
+                    }
+                    
+                    // Slower wave frequency
+                    const sinY = Math.sin(i * 0.1 + frame * 0.02) * (waveHeight + mouseInfluence);
+                    p.y = canvas.height / 2 + sinY;
+                    ctx.lineTo(p.x, p.y);
+
+                    // Draw dots
+                    ctx.fillStyle = `rgba(200, 220, 255, ${0.5 + Math.sin(i * 0.1 + frame * 0.02) * 0.3})`;
+                    ctx.fillRect(p.x, p.y, 2, 2);
+                }
+                ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
+                ctx.stroke();
+
+                frame++;
+                requestAnimationFrame(animate);
+            }
+            
+            resizeCanvas();
+            animate();
         });
     </script>
 </body>
