@@ -81,7 +81,7 @@
         }
         .header-content {
             position: relative;
-            z-index: 2; /* Make sure content is above the fade */
+            z-index: 2; /* Ensure content is above the fade */
         }
         /* Gradient fade at the bottom of the header */
         header::after {
@@ -108,21 +108,46 @@
             padding-left: 1rem;
         }
 
-        /* --- Research Card Styling --- */
-        .research-card {
+        /* --- Research Area Card Styling --- */
+        .area-card {
             background-color: #1a273b;
             border: 1px solid #2d3748;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .research-card:hover {
+        .area-card:hover {
             transform: translateY(-5px);
             border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
         }
-        .research-card h3 {
+        .area-card h3 {
             color: #93c5fd;
         }
-        .research-card p {
-            color: #a0aec0;
+        .area-card svg {
+            color: #60a5fa;
+        }
+
+        /* --- Sponsor Carousel Styling --- */
+        .sponsor-carousel-container {
+            -webkit-mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+            mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+        }
+        .sponsor-carousel {
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* For Firefox */
+        }
+        .sponsor-carousel::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
+        }
+        .sponsor-card {
+            flex: 0 0 200px; /* Flex-basis of 200px */
+            max-width: 200px;
+        }
+        .carousel-arrow {
+            background-color: rgba(59, 130, 246, 0.5);
+            transition: background-color 0.3s ease;
+        }
+        .carousel-arrow:hover {
+            background-color: rgba(59, 130, 246, 0.8);
         }
     </style>
 </head>
@@ -144,7 +169,6 @@
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-100 mb-4 animate-on-scroll">
                 Computational Aging, Family, and Evidence
             </h1>
-            <br>
             <p class="text-lg md:text-xl text-gray-300 mb-10 animate-on-scroll">
                 Bringing data science to health, aging, and inequality research.
             </p>
@@ -152,63 +176,126 @@
         </div>
     </header>
 
-    <section id="research-highlights" class="py-20 px-4 md:px-8 lg:px-16 text-center">
+    <section id="research-areas" class="py-20 px-4 md:px-8 lg:px-16 text-center">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-12 animate-on-scroll">
-                Explore Our Research Highlights
+                Research Areas
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-                <!-- Card 1 -->
-                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll">
-                    <h3 class="text-lg font-semibold mb-2">Longevity Data Analysis</h3>
-                    <p class="text-sm">
-                        Investigating health trends using large-scale demographic datasets and advanced statistical models.
-                    </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <!-- Area 1 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M12 14a5 5 0 100-10 5 5 0 000 10z"></path></svg>
+                    <h3 class="text-lg font-semibold">Family Demography</h3>
                 </div>
-                <!-- Card 2 -->
-                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.2s;">
-                    <h3 class="text-lg font-semibold mb-2">Family Dynamics</h3>
-                    <p class="text-sm">
-                        Analyzing the impact of family structures on health and well-being across generations.
-                    </p>
+                <!-- Area 2 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.1s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    <h3 class="text-lg font-semibold">Policy Evaluations</h3>
                 </div>
-                <!-- Card 3 -->
-                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.4s;">
-                    <h3 class="text-lg font-semibold mb-2">Healthcare Inequality</h3>
-                    <p class="text-sm">
-                        Examining disparities in healthcare access and outcomes across different socioeconomic groups.
-                    </p>
+                <!-- Area 3 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.2s;">
+                     <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    <h3 class="text-lg font-semibold">Population Health</h3>
                 </div>
-                <!-- Card 4 -->
-                <div class="research-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.6s;">
-                    <h3 class="text-lg font-semibold mb-2">Evidence-Based Policy</h3>
-                    <p class="text-sm">
-                        Developing tools to translate research findings into actionable policy recommendations.
-                    </p>
+                <!-- Area 4 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.3s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                    <h3 class="text-lg font-semibold">Cognitive Aging</h3>
                 </div>
-            </div>
-            <div class="text-center mt-12 animate-on-scroll">
-                <a href="highlights.html" class="btn-secondary">View All Highlights</a>
+                 <!-- Area 5 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.4s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.737 11l-.262-2.835a1 1 0 01.99-1.13h7.07a1 1 0 01.99 1.13L16.263 11M12 16v4m-4-4v4m8-4v4"></path></svg>
+                    <h3 class="text-lg font-semibold">China</h3>
+                </div>
+                <!-- Area 6 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.5s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <h3 class="text-lg font-semibold">Health Disparities</h3>
+                </div>
+                <!-- Area 7 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.6s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3 class="text-lg font-semibold">Computational Social Science/AI</h3>
+                </div>
+                <!-- Area 8 -->
+                <div class="area-card p-6 rounded-lg shadow-lg animate-on-scroll" style="transition-delay: 0.7s;">
+                    <svg class="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+                    <h3 class="text-lg font-semibold">Statistical Methods</h3>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Sponsors Section -->
     <section id="sponsors" class="py-16 px-4 md:px-8 lg:px-16 text-center bg-gray-900 bg-opacity-30">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-12 animate-on-scroll">Our Sponsors</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-center">
-                <div class="animate-on-scroll">
-                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+1" alt="Sponsor 1 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
-                </div>
-                <div class="animate-on-scroll" style="transition-delay: 0.2s;">
-                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+2" alt="Sponsor 2 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
-                </div>
-                <div class="animate-on-scroll" style="transition-delay: 0.4s;">
-                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+3" alt="Sponsor 3 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
-                </div>
-                <div class="animate-on-scroll" style="transition-delay: 0.6s;">
-                    <img src="https://placehold.co/150x80/f0f2f5/2a4365?text=Sponsor+4" alt="Sponsor 4 Logo" class="mx-auto filter grayscale hover:grayscale-0 transition-all duration-300">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-12 animate-on-scroll">Our Sponsors & Grants</h2>
+            <div class="relative">
+                <!-- Left Arrow -->
+                <button id="scroll-left" class="carousel-arrow absolute left-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <!-- Right Arrow -->
+                <button id="scroll-right" class="carousel-arrow absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full">
+                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                <div class="sponsor-carousel-container overflow-hidden">
+                    <div id="sponsor-carousel" class="sponsor-carousel flex space-x-8 overflow-x-auto p-4">
+                        <!-- Sponsor/Grant Items -->
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Eunice Kennedy Shriver National Institute of Child Health and Human Development</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The Life Course Center, University of Minnesota Twin Cities</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The Alzheimer’s Association and the National Alzheimer’s Coordinating Center (NACC)</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">National Institute on Aging</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The Hong Kong Research Grant Council</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">National Institute on Aging (GEMSSTAR)</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">National Institute on Minority Health and Health Disparities</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The National Science Fund of China for Distinguished Young Scholars</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Ministry of Education of the People’s Republic of China</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The ISPS-MacMillan Multidisciplinary Research Fund</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Yale School of Management</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">The Whitney and Betty MacMillan Center for International and Area Studies, Yale University</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Institution for Social and Policy Studies, Yale University</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Planetary Solutions Project Seed Grant Program, Yale University</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Education Studies Program, Yale University</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Tobin Center for Economic Policy, Institution for Social and Policy Studies, and Faculty of
+Arts and Sciences, Yale University</span>
+                        </div>
+                        <div class="sponsor-card text-center p-4">
+                            <span class="text-gray-400">Sanford School of Public Policy, Duke University</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -251,7 +338,7 @@
             }, { threshold: 0.1 });
             animateElements.forEach(element => observer.observe(element));
 
-            // --- Hexagon and Wave Animation ---
+            // --- Header Animation ---
             const canvas = document.getElementById('header-canvas');
             const ctx = canvas.getContext('2d');
             let hexagons = [];
@@ -276,7 +363,6 @@
                 mouse.y = undefined;
             });
 
-            // Helper to draw hexagons
             function drawHexagon(x, y, size, color) {
                 ctx.beginPath();
                 for (let i = 0; i < 6; i++) {
@@ -294,8 +380,6 @@
                     this.size = size;
                     this.speed = speed;
                     this.opacity = opacity;
-                    this.originalX = x;
-                    this.originalY = y;
                 }
                 update() {
                     this.y -= this.speed;
@@ -303,8 +387,6 @@
                         this.y = canvas.height + this.size;
                         this.x = Math.random() * canvas.width;
                     }
-
-                    // Mouse interaction
                     if (mouse.x !== undefined) {
                         const dx = this.x - mouse.x;
                         const dy = this.y - mouse.y;
@@ -324,11 +406,11 @@
                 for (let a = 0; a < hexagons.length; a++) {
                     for (let b = a; b < hexagons.length; b++) {
                         const dist = Math.hypot(hexagons[a].x - hexagons[b].x, hexagons[a].y - hexagons[b].y);
-                        if (dist < 200) { // Connection distance
+                        if (dist < 200) {
                             ctx.save();
                             ctx.globalAlpha = 1 - (dist / 200);
                             ctx.beginPath();
-                            ctx.setLineDash([2, 5]); // Dotted line style
+                            ctx.setLineDash([2, 5]);
                             ctx.moveTo(hexagons[a].x, hexagons[a].y);
                             ctx.lineTo(hexagons[b].x, hexagons[b].y);
                             ctx.strokeStyle = "rgba(96, 165, 250, 0.2)";
@@ -342,7 +424,6 @@
             function init() {
                 hexagons = [];
                 waveParticles = [];
-                // Create drifting hexagons
                 for (let i = 0; i < 50; i++) {
                     const size = Math.random() * 30 + 10;
                     const x = Math.random() * canvas.width;
@@ -351,7 +432,6 @@
                     const opacity = Math.random() * 0.2 + 0.05;
                     hexagons.push(new Hexagon(x, y, size, speed, opacity));
                 }
-                // Create wave particles
                 for (let i = 0; i < canvas.width / 5; i++) {
                     waveParticles.push({ x: i * 5, y: canvas.height / 2 });
                 }
@@ -359,21 +439,15 @@
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                // Animate hexagons and connect them
                 hexagons.forEach(hex => hex.update());
                 connectHexagons();
                 hexagons.forEach(hex => hex.draw());
-
-
-                // Animate data wave
                 ctx.beginPath();
                 ctx.moveTo(0, canvas.height / 2);
                 for (let i = 0; i < waveParticles.length; i++) {
                     let p = waveParticles[i];
                     let waveHeight = 20;
                     let mouseInfluence = 0;
-
                     if (mouse.x !== undefined && mouse.y !== undefined) {
                         const dx = p.x - mouse.x;
                         const dy = (canvas.height / 2) - mouse.y;
@@ -382,25 +456,61 @@
                             mouseInfluence = (150 - dist) * 0.5;
                         }
                     }
-                    
-                    // Slower wave frequency
                     const sinY = Math.sin(i * 0.1 + frame * 0.02) * (waveHeight + mouseInfluence);
                     p.y = canvas.height / 2 + sinY;
                     ctx.lineTo(p.x, p.y);
-
-                    // Draw dots
                     ctx.fillStyle = `rgba(200, 220, 255, ${0.5 + Math.sin(i * 0.1 + frame * 0.02) * 0.3})`;
                     ctx.fillRect(p.x, p.y, 2, 2);
                 }
                 ctx.strokeStyle = 'rgba(96, 165, 250, 0.2)';
                 ctx.stroke();
-
                 frame++;
                 requestAnimationFrame(animate);
             }
             
             resizeCanvas();
             animate();
+
+            // --- Sponsor Carousel Logic ---
+            const carousel = document.getElementById('sponsor-carousel');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            const carouselWrapper = carousel.closest('.relative');
+
+            const originalContent = carousel.innerHTML;
+            carousel.innerHTML += originalContent;
+
+            let scrollInterval;
+
+            const startScrolling = () => {
+                clearInterval(scrollInterval); 
+                scrollInterval = setInterval(() => {
+                    carousel.scrollLeft += 1;
+                    if (carousel.scrollLeft >= carousel.scrollWidth / 2) {
+                        carousel.style.scrollBehavior = 'auto';
+                        carousel.scrollLeft = 0;
+                        carousel.style.scrollBehavior = 'smooth';
+                    }
+                }, 25);
+            };
+
+            const stopScrolling = () => {
+                clearInterval(scrollInterval);
+            };
+
+            scrollLeftBtn.addEventListener('click', () => {
+                const scrollAmount = carousel.clientWidth; 
+                carousel.scrollLeft -= scrollAmount;
+            });
+            scrollRightBtn.addEventListener('click', () => {
+                const scrollAmount = carousel.clientWidth;
+                carousel.scrollLeft += scrollAmount;
+            });
+
+            carouselWrapper.addEventListener('mouseenter', stopScrolling);
+            carouselWrapper.addEventListener('mouseleave', startScrolling);
+
+            startScrolling();
         });
     </script>
 </body>
