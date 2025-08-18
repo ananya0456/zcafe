@@ -5,57 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z-CAFE Lab - Team</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Custom styles for the Inter font and general layout */
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            background-color: #0d1a2f; /* Darker, deep navy background */
-            color: #e2e8f0; /* Lightened default text color for contrast */
+            background-color: #0d1a2f;
+            color: #e2e8f0;
             margin: 0;
             overflow-x: hidden;
-            padding-top: 64px; /* Space for fixed nav */
+            padding-top: 64px;
         }
 
-        /* Styles for elements that will animate */
         .animate-on-scroll {
-            opacity: 0; /* Start invisible */
-            transform: translateY(20px); /* Start slightly below its final position */
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
         .animate-on-scroll.is-visible {
-            opacity: 1; /* Fade in */
-            transform: translateY(0); /* Move to final position */
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        /* Delay for sequential animations */
-        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
-        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
-        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
-        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
-        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
-        .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
-        .animate-on-scroll:nth-child(7) { transition-delay: 0.6s; }
-        .animate-on-scroll:nth-child(8) { transition-delay: 0.7s; }
-        .animate-on-scroll:nth-child(9) { transition-delay: 0.8s; }
-        .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
-        .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
-
+        
+        /* --- Header with new Asymmetrical Layout --- */
         header {
-            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
-            padding-top: 100px;
-            padding-bottom: 100px;
+            position: relative;
+            background: #0d1a2f;
+            overflow: hidden; /* Important for canvas positioning */
+        }
+        #header-viz {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind the content */
+        }
+        .header-content-wrapper {
+            position: relative;
+            z-index: 2; /* In front of the canvas and fade */
+        }
+        /* Gradient fade at the bottom of the header */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; /* Adjust height of the fade */
+            background: linear-gradient(to top, #0d1a2f, transparent);
+            z-index: 1; /* Position fade between canvas and content */
         }
 
-        /* Scroll arrow animation */
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .scroll-arrow { animation: bounce 1.5s infinite; }
-
-        /* Fixed Navigation Bar */
         .fixed-nav {
             position: fixed;
             top: 0;
@@ -64,54 +64,51 @@
             background-color: #0d1a2f;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+        .fixed-nav ul li {
+            padding: 0 1rem;
+        }
         .fixed-nav ul li:not(:first-child) {
-            border-left: 1px solid #374151; /* Darker divider */
-            padding-left: 1rem;
+            border-left: 1px solid #374151;
         }
 
-        /* Team Card Styling for Dark Mode */
-        .team-card {
-            background-color: #1a273b; /* A lighter navy than the body */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* --- Card Styling with Glassmorphism Effect --- */
+        .info-card {
+            background-color: rgba(26, 39, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.5rem;
         }
-        .team-card:hover {
+        .info-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            /* **FIX**: Added the glow effect */
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
         }
-        .team-card img {
+        .info-card img {
             border-radius: 50%;
             object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
-        .team-card .name-link {
-            color: #d1d5db; /* Light gray for names */
-        }
-        .team-card .name-link:hover {
-            color: #60a5fa; /* Light blue on hover */
-        }
-        .team-card .title {
-            color: #9ca3af; /* Medium gray for title/affiliation */
-        }
-        .team-card .bio {
-            color: #6b7280; /* Darker gray for bio text */
-        }
-        .team-card .website-link {
-            color: #60a5fa;
-        }
+        .info-card .name-link { color: #e5e7eb; }
+        .info-card .title { color: #9ca3af; }
+        .info-card .website-link { color: #60a5fa; }
+        .info-card .bio { color: #8592a3; }
         
-        /* Past Members Card */
         .past-members-card {
             background-color: #1a273b;
             color: #d1d5db;
+            border-radius: 0.5rem;
         }
         .past-members-card .font-semibold {
-            color: #e5e7eb; /* Slightly brighter for names */
+            color: #e5e7eb;
         }
     </style>
 </head>
 <body>
-    <nav class="fixed-nav py-4 px-6 flex justify-between items-center">
+    <nav class="fixed-nav py-4 px-6 flex justify-between items-center text-white">
         <div class="text-lg font-bold">Z-CAFE</div>
-        <ul class="flex space-x-5">
+        <ul class="flex">
             <li><a href="index.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Home</a></li>
             <li><a href="team.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Team</a></li>
             <li><a href="research.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Research</a></li>
@@ -120,18 +117,16 @@
         </ul>
     </nav>
 
-    <header class="text-center py-12 px-4 md:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
-                Meet the Z-CAFE Lab Team
-            </h1>
-            <p class="text-md md:text-lg text-gray-300 mb-8 animate-on-scroll">
-                Our team of researchers is dedicated to advancing knowledge in computational aging, family, and evidence.
-            </p>
-            <div class="mt-8 animate-on-scroll scroll-arrow">
-                <svg class="w-8 h-8 text-blue-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                </svg>
+    <header class="py-20 px-4 md:px-8 lg:px-16">
+        <canvas id="header-viz"></canvas>
+        <div class="header-content-wrapper max-w-6xl mx-auto flex items-center justify-between">
+            <div class="w-1/2 text-left animate-on-scroll">
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-100 mb-3">
+                    Meet the Z-CAFE Lab Team
+                </h1>
+                <p class="text-md md:text-lg text-gray-400">
+                    Our team of researchers is dedicated to advancing knowledge in computational aging, family, and evidence.
+                </p>
             </div>
         </div>
     </header>
@@ -142,27 +137,19 @@
             <!-- Faculty Section -->
             <section class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Faculty</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Emma Zang -->
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="EmmaZang.png" alt="Profile Picture of Emma Zang" class="w-24 h-24 mb-4">
                         <a href="http://www.emmazang.net/" target="_blank" rel="noopener noreferrer" class="text-xl hover:underline font-semibold name-link">Emma Zang</a>
-                        <p class="text-md title mt-1">Assistant Professor, Department of Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
-
-                        <p class="text-sm bio mt-2">
-                            Bio placeholder text.
-                        </p>
+                        <p class="text-md title mt-1">Assistant Professor in the Department of Sociology, Yale University</p>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <!-- Yifan Lou -->
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll" style="transition-delay: 0.2s;">
                         <img src="Yifan.png" alt="Profile Picture of Yifan Lou" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Yifan Lou</h3>
                         <p class="text-md title">Assistant Professor in Social Work, Virginia Commonwealth University</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium mt-2 inline-block mb-2">[Website]</a>
-                        <p class="text-sm bio">
-                            Bio placeholder text.
-                        </p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
                 </div>
             </section>
@@ -171,14 +158,12 @@
             <section class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Postdoc</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <img src="Yongxin.jpg" alt="Profile Picture of Yongxin Shang" class="w-24 h-24 mb-4">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
+                        <img src="Yongxin.jpg" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Yongxin Shang</h3>
                         <p class="text-md title">Cornell Public Policy, soon Yale Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
-                        <p class="text-sm bio">
-                            Bio placeholder text.
-                        </p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
                 </div>
             </section>
@@ -187,90 +172,95 @@
             <section class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Graduate Students</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Student Cards -->
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="ZitongWang.png" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Zitong Wang</h3>
                         <p class="text-md title">CUHK Policy</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=Photo" alt="Profile Picture" class="w-24 h-24 mb-4">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
+                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=SL" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Siyao Lu</h3>
                         <p class="text-md title">Yale Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="JasonWong.jpeg" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Jason Wong</h3>
                         <p class="text-md title">Yale Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="Jiaowei_Gong.png" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Jiaowei Gong</h3>
                         <p class="text-md title">Harvard Public Health</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
-                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=Photo" alt="Profile Picture" class="w-24 h-24 mb-4">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
+                        <img src="https://placehold.co/96x96/f0f2f5/2a4365?text=YY" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Yishi Yin</h3>
                         <p class="text-md title">Brown Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Undergraduate Students Section -->
-            <section>
+            <section class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Undergraduate Students</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Undergrad Cards -->
-                     <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="melissa_tian.png" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Melissa Tian</h3>
                         <p class="text-md title">Yale Sociology</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="AviKabra.png" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Avi Kabra</h3>
                         <p class="text-md title">Yale Data Science</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                    <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="Valeri.jpg" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Valeri Vankov</h3>
                         <p class="text-md title">Yale Data Science, Film & Media Studies</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
-                    <div class="team-card p-6 rounded-lg shadow-md flex flex-col items-center text-center animate-on-scroll">
+                     <div class="info-card p-6 flex flex-col items-center text-center animate-on-scroll">
                         <img src="ananya.png" alt="Profile Picture" class="w-24 h-24 mb-4">
                         <h3 class="text-xl font-semibold name-link mb-1">Ananya Vuppala</h3>
                         <p class="text-md title">Yale College</p>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="website-link hover:underline text-sm font-medium inline-block mt-2 mb-2">[Website]</a>
+                        <a href="#" class="website-link hover:underline text-sm font-medium mt-2">[Website]</a>
+                        <p class="text-sm bio mt-2">Bio.</p>
                     </div>
                 </div>
             </section>
             
             <!-- Past Members Section -->
-            <section class="mt-16">
+            <section class="mb-16">
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Past Members</h2>
-                <div class="past-members-card p-6 rounded-lg shadow-md animate-on-scroll">
+                <div class="past-members-card p-6 animate-on-scroll">
                     <ul class="list-disc list-inside space-y-2 text-left">
                         <li><span class="font-semibold">Anna Guo</span> (PhD in Biostatistics, Emory University)</li>
                         <li><span class="font-semibold">Christina Pao</span> (Rhodes Scholar; PhD in Sociology, Princeton University)</li>
                         <li><span class="font-semibold">Drishti Baid</span> (PhD in Public Policy, University of Southern California)</li>
                         <li><span class="font-semibold">Nancy Lu</span> (MD, Harvard Medical School)</li>
-                        <!-- Add other past members as list items -->
                     </ul>
                 </div>
             </section>
-
         </div>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
             <div class="flex-1 text-center md:text-left">
@@ -295,6 +285,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Scroll-based animations
             const animateElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -303,13 +294,99 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
+            }, { threshold: 0.1 });
+            animateElements.forEach(element => observer.observe(element));
+
+            // --- Header Data Visualization ---
+            const canvas = document.getElementById('header-viz');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const mouse = { x: undefined, y: undefined };
+
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+                init();
+            }
+            window.addEventListener('resize', resizeCanvas);
+
+            window.addEventListener('mousemove', e => {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.clientX - rect.left;
+                mouse.y = e.clientY - rect.top;
             });
-            animateElements.forEach(element => {
-                observer.observe(element);
+            window.addEventListener('mouseout', () => {
+                mouse.x = undefined;
+                mouse.y = undefined;
             });
+
+            class Particle {
+                constructor(x, y, size, speed) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = size;
+                    this.speed = speed;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 1;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(96, 165, 250, 0.5)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                update() {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = 100;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < maxDistance) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    } else {
+                        if (this.x !== this.baseX) {
+                            let dx = this.x - this.baseX;
+                            this.x -= dx / 10;
+                        }
+                        if (this.y !== this.baseY) {
+                            let dy = this.y - this.baseY;
+                            this.y -= dy / 10;
+                        }
+                    }
+                    this.draw();
+                }
+            }
+
+            function init() {
+                particles = [];
+                const particleCount = 100;
+                for (let i = 0; i < particleCount; i++) {
+                    // Bias particle generation to the right side
+                    const x = (Math.pow(Math.random(), 0.5)) * canvas.width;
+                    const y = Math.random() * canvas.height;
+                    const size = Math.random() * 2 + 1;
+                    particles.push(new Particle(x, y, size));
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                }
+                requestAnimationFrame(animate);
+            }
+
+            resizeCanvas();
+            animate();
         });
     </script>
 </body>
