@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-CAFE Lab - Highlights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the Montserrat font and consistent layout */
+        body {
+            font-family: 'IBM Plex Sans', sans-serif; /* Corrected typo: 'Monsterrat' to 'Montserrat' */
+            background-color: #0d1a2f; /* Dark navy background from index.html */
+            color: #e2e8f0; /* Lightened default text color for contrast from index.html */
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+            padding-top: 64px; /* Add padding to body to prevent content from hiding behind fixed nav */
+        }
+
+        /* Styles for elements that will animate */
+        .animate-on-scroll {
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below its final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to final position */
+        }
+
+        /* Delay for sequential animations (adjust as needed for more elements) */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+        .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+        .animate-on-scroll:nth-child(7) { transition-delay: 0.6s; }
+        .animate-on-scroll:nth-child(8) { transition-delay: 0.7s; }
+        .animate-on-scroll:nth-child(9) { transition-delay: 0.8s; }
+        .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
+        .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
+
+        /* Specific styles for the primary button (if you decide to add one to this page) */
+        .btn-primary {
+            background-color: #3b82f6; /* Bright blue from index.html */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* More pronounced shadow from index.html */
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb; /* Darker blue on hover from index.html */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4); /* Deeper shadow on hover from index.html */
+        }
+
+        /* Footer styling - adjusted to match index.html footer */
+        footer {
+            background-color: #1a273b; /* Darker gray from index.html footer */
+            padding: 40px 0; /* Increased padding for consistency */
+            text-align: center;
+            font-size: 0.85em;
+            color: #e2e8f0; /* Lighter text color for contrast */
+            margin-top: 50px; /* Space above footer */
+        }
+
+        /* Header styling for highlights page - consistent with index.html */
+        header {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient from index.html header */
+            padding-top: 100px; /* Consistent padding from index.html */
+            padding-bottom: 100px; /* Consistent padding from index.html */
+        }
+
+        header .max-w-3xl { /* Changed to 3xl for this page, but inherited styling is similar */
+            position: relative;
+            z-index: 1; /* Ensure text content is above */
+        }
+
+        header h1 {
+            color: #e2e8f0; /* Light text for header title */
+        }
+
+        header p {
+            color: #cbd5e1; /* Lighter text for header description */
+        }
+
+        /* Fixed Navigation Bar - already consistent */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #0d1a2f; /* Dark nav bar background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for fixed nav */
+        }
+
+        .fixed-nav ul li:not(:first-child) {
+            border-left: 1px solid #374151; /* A light grey vertical divider */
+            padding-left: 1rem; /* Space between the divider and the link */
+        }
+
+        /* Card background and text colors - consistent with index.html */
+        .bg-white { /* Renamed to .highlight-card for clarity, but kept .bg-white for existing usage */
+            background-color: #1a273b; /* Darker card background from index.html */
+            border-radius: 8px; /* Consistent rounded corners */
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow for cards */
+        }
+
+        .bg-white h3, .bg-white p, .bg-white span {
+            color: #000000; /* Changed to black */
+        }
+
+        .bg-white .text-blue-800 {
+            color: #3b82f6; /* Darker blue for titles for better contrast on white */
+        }
+
+        .bg-white .text-gray-600, .bg-white .text-gray-500 {
+            color: #333333; /* Darker grey for descriptions on white */
+        }
+
+        .text-blue-600 {
+            color: #3b82f6; /* Consistent darker blue for links */
+        }
+
+        section h2 { /* For main section headings on this page */
+            color: #e2e8f0; /* Consistent with index.html heading color */
+        }
+
+        /* Footer content text alignment (adjusting for flexbox) */
+        footer .text-sm {
+            color: #cbd5e1; /* Consistent lighter gray for footer details */
+        }
+
+        footer a {
+            color: #63b3ed; /* Consistent link color in footer */
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav class="fixed-nav py-4 px-6 flex justify-between items-center">
+        <div class="text-lg font-bold">Z-CAFE</div>
+        <ul class="flex space-x-5">
+            <li><a href="index.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Home</a></li>
+            <li><a href="team.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Team</a></li>
+            <li><a href="research.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Research</a></li>
+            <li><a href="highlights.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Highlights</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="text-center py-16 px-4 md:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
+                Lab Highlights
+            </h1>
+            <p class="text-md md:text-lg text-gray-300 mb-8 animate-on-scroll">
+                Celebrating our achievements, news, and notable contributions to the field.
+            </p>
+            <!-- Scroll arrow can be re-added if desired for consistency -->
+        </div>
+    </header>
+
+    <main class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-5xl mx-auto">
+
+            <section class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Recent News & Achievements</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">YaleNews | Juggling act: New insights into parenting during the pandemic</h3>
+                        <p class="text-gray-600 mb-4">
+                            A dramatic shift toward remote work caused telecommuting parents in the U.S., particularly mothers, to spend significantly more time “parenting” their children.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: Dec 13, 2022</span>
+                        <a href="https://news.yale.edu/2022/12/13/juggling-act-new-insights-parenting-during-pandemic?fbclid=IwAR2s9D_eV2kd1tKuC0w8XBbs7MD3i2chFVAKFDGA1IEOp-nYspVKA4DNxJw" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Cornell Chronicle | Pandemic put more parenting stress on mothers</h3>
+                        <p class="text-gray-600 mb-4">
+                            A first-of-its-kind study of parents’ work arrangements during the pandemic shows that mothers working from home increased their supervisory parenting fully two hours more than fathers did, and women were also more likely to adapt their work schedules to new parenting demands.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: January 3, 2023</span>
+                        <a href="https://news.cornell.edu/stories/2023/01/pandemic-put-more-parenting-stress-mothers" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">YaleNews | Study shows effects of Chinese divorce law on women’s wellbeing</h3>
+                        <p class="text-gray-600 mb-4">
+                            New Yale research examines how a 2011 Supreme Court ruling in China harms women’s property rights — and how some couples work together to mitigate that harm.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: Jan 24, 2020</span>
+                        <a href="https://news.yale.edu/2020/01/24/study-shows-effects-chinese-divorce-law-womens-wellbeing?fbclid=IwAR0nU5LQtF54VFpafcAgLz-zNg8TKGiwA71XBII_Y_WQdWpgby5iHkEwMY0" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Emma Zang talks about the impact of Chinese divorce reform</h3>
+                        <p class="text-gray-600 mb-4">
+                            Professor Zang’s research interests lie at the intersection of health and aging, marriage and family, and inequality. She is particularly interested in developing and evaluating methods to model trajectories and life transitions in order to better understand how...
+                        </p>
+                        <span class="text-sm text-gray-500">Date: Dec 4, 2019</span>
+                        <a href="https://www.youtube.com/watch?v=_fJjCygPUu8" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">中国家庭｜因房价触发的“门当户对”</h3>
+                        <p class="text-gray-600 mb-4">
+                            在中国人的观念里，“家”往往跟房子紧密结合在一起，结婚和买房之间也自然的联结在一起。
+                        </p>
+                        <span class="text-sm text-gray-500">Date: May 5, 2020</span>
+                        <a href="https://www.thepaper.cn/newsDetail_forward_7247402" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-blue-800 mb-3">Title Here</h3>
+                        <p class="text-gray-600 mb-4">
+                            Description here.
+                        </p>
+                        <span class="text-sm text-gray-500">Date: [Date Here]</span>
+                        <a href="LINK" class="text-blue-600 hover:underline text-sm ml-2">[Link]</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-lg font-bold text-gray-100 mb-2">Z-CAFE Lab</p>
+                <p>&copy; 2025 Z-CAFE Lab</p>
+                <p class="text-sm text-gray-400">Yale University</p>
+            </div>
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Address</p>
+                <p class="text-sm">210 Prospect St, New Haven, CT 06511</p>
+            </div>
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Contact</p>
+                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400">203-436-4181</a></p>
+                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400">emma.zang@yale.edu</a></p>
+            </div>
+            <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
+              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture";">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for scroll-based animations using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add 'is-visible' class when element enters viewport
+                        entry.target.classList.add('is-visible');
+                        // Stop observing once it's visible to prevent re-triggering
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger slightly earlier/later
+            });
+
+            // Observe each element
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
