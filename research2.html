@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-CAFE Lab - Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the Inter font and general layout */
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #0d1a2f; /* Darker, deep navy background */
+            color: #e2e8f0; /* Lightened default text color for contrast */
+            margin: 0;
+            overflow-x: hidden;
+            padding-top: 64px; /* Space for fixed nav */
+        }
+
+        /* Styles for elements that will animate */
+        .animate-on-scroll {
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below its final position */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Smooth transition */
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to final position */
+        }
+
+        /* Delay for sequential animations (adjust as needed for more elements) */
+        .animate-on-scroll:nth-child(1) { transition-delay: 0s; }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll:nth-child(5) { transition-delay: 0.4s; }
+        .animate-on-scroll:nth-child(6) { transition-delay: 0.5s; }
+        .animate-on-scroll:nth-child(7) { transition-delay: 0.6s; }
+        .animate-on-scroll:nth-child(8) { transition-delay: 0.7s; }
+        .animate-on-scroll:nth-child(9) { transition-delay: 0.8s; }
+        .animate-on-scroll:nth-child(10) { transition-delay: 0.9s; }
+        .animate-on-scroll:nth-child(11) { transition-delay: 1.0s; }
+
+        /* Specific styles for the primary button */
+        .btn-primary {
+            background-color: #3b82f6; /* Blue */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        header {
+            background: linear-gradient(to right, #1a365d, #0f223f); /* Dark blue gradient for header */
+            padding-top: 100px; /* Increased padding to give more visual space */
+            padding-bottom: 100px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #e2e8f0; /* Lighter grey for footer */
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 50px; /* Space above footer */
+        }
+
+        /* Scroll arrow animation (if you decide to add one to this page) */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .scroll-arrow {
+            animation: bounce 1.5s infinite; /* Apply bounce animation */
+        }
+
+        /* Fixed Navigation Bar */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #0d1a2f; /* Dark nav bar background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Stronger shadow for fixed nav */
+        }
+
+        .fixed-nav ul li:not(:first-child) {
+            border-left: 1px solid #374151; /* A light grey vertical divider */
+            padding-left: 1rem; /* Space between the divider and the link */
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="fixed-nav py-4 px-6 flex justify-between items-center">
+        <div class="text-lg font-bold">Z-CAFE</div>
+        <ul class="flex space-x-5">
+            <li><a href="index.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Home</a></li>
+            <li><a href="team.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Team</a></li>
+            <li><a href="research.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Research</a></li>
+            <li><a href="highlights.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Highlights</a></li>
+            <li><a href="contact.html" class="hover:text-blue-400 font-medium text-sm transition-colors duration-300">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="text-center py-12 px-4 md:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-100 mb-3 animate-on-scroll">
+                Our Research
+            </h1>
+            <p class="text-md md:text-lg text-gray-300 mb-8 animate-on-scroll">
+                Exploring the intersections of computational methods, aging, family dynamics, and evidence-based policy.
+            </p>
+            <!--
+            <div class="mt-8 animate-on-scroll scroll-arrow">
+                <svg class="w-8 h-8 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+            -->
+        </div>
+    </header>
+
+    <main class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-5xl mx-auto">
+
+            <!-- CURRENT PROJECTS -->
+            <section class="mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Current Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Unplanned Misallocation: Gender and Spousal Spillover Effects of Retirement on Time Use</h3>
+                        <p class="text-gray-600 mb-4">
+                            Gong, Jiaowei., Yifan Lou, Emma Zang.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Childhood Upward Mobility Context and Health in Early Adulthood</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zang, Emma., Meera Choi*, Melissa Tian*.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Property Division Law and Investment in Household Public Goods: Evidence in China</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zang, Emma., Xi Yang, ZitongWang*, Ang Sun.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Teenage Pregnancy’s Spillover Effects Revisited</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zang, Emma., Keitaro Okura, Haolun Li.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Clean Air Act 1990 and Its Long-Term Impact on Children’s Educational Performance.</h3>
+                        <p class="text-gray-600 mb-4">
+                            Li, Haolun., Emma Zang.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Protests and Healthcare Utilization</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zang, Emma., Yining Yang.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    <!--
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Protests and Healthcare Utilization</h3>
+                        <p class="text-gray-600 mb-4">
+                            Zang, Emma., Yining Yang.
+                        </p>
+                        <a href="#" class="btn-primary inline-block text-sm">Learn More</a>
+                    </div>
+                    -->
+                </div>
+            </section>
+
+            <!-- RECENT PUBLICATIONS-->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Recent Publications</h2>
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+                    <!-- Publication Example 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Publication Title One: A Comprehensive Analysis of X</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Summary:</span> This paper presents a novel approach to analyzing [specific data type] to understand [research area]. We highlight the significant correlations between [factor A] and [factor B], demonstrating a new perspective on [topic].
+                        </p>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Key Figures:</span> Figure 1 illustrates the primary model architecture. Figure 2 presents a comparative analysis of data trends over five years, showing significant shifts in [data point].
+                        </p>
+                        <p class="text-gray-500 text-sm mb-3">
+                            <span class="font-semibold">Date:</span> October 26, 2024
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">Read Full Text</a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">View Supplement</a>
+                        </div>
+                    </div>
+
+                    <!-- Publication Example 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Publication Title Two: Methodological Advances in Y Research</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Summary:</span> This study introduces an innovative methodology for [specific research method], overcoming previous limitations in data acquisition and analysis. Our findings provide a robust framework for future investigations into [related topic].
+                        </p>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Key Figures:</span> Figure 1 outlines the new algorithm flow. Figure 3 displays the validation results, highlighting a [percentage] improvement in accuracy compared to existing methods.
+                        </p>
+                        <p class="text-gray-500 text-sm mb-3">
+                            <span class="font-semibold">Date:</span> September 1, 2024
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">Read Full Text</a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">Data Repository</a>
+                        </div>
+                    </div>
+
+                    <!-- Publication Example 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Publication Title Three: Impact of Z on Public Health</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Summary:</span> We examine the long-term public health implications of [specific factor Z] using a mixed-methods approach. The research underscores the need for [policy recommendation] to mitigate observed negative outcomes.
+                        </p>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Key Figures:</span> Figure 4 presents demographic breakdowns of affected populations. Supplementary Figure S1 shows temporal trends of [health indicator] before and after [event].
+                        </p>
+                        <p class="text-gray-500 text-sm mb-3">
+                            <span class="font-semibold">Date:</span> August 15, 2024
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">Read Full Text</a>
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline text-sm font-medium">Policy Brief</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <br>
+            <br>
+            <br>
+
+            <!-- TOOLS SECTION -->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-100 mb-8 animate-on-scroll">Tools</h2>
+                <div class="grid grid-cols-1 gap-8">
+                    <!-- Tool 1: bayesmlogit -->
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">bayesmlogit: Bayesian Multistate Life Table Method for Complex State Spaces</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Authors:</span> Zang, Emma; Xuezhixing Zhang; Scott Lynch
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://github.com/dewelve/bayesmlogit" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                                <!-- GitHub Icon -->
+                                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.163 6.839 9.48.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.085 2.91.823.092-.64.354-1.085.64-1.336-2.22-.253-4.555-1.116-4.555-4.949 0-1.092.39-1.988 1.029-2.68a3.73 3.73 0 01-.103-1.992s.827-.268 2.75 1.025c.78-.216 1.606-.324 2.433-.324.827 0 1.653.108 2.433.324 1.923-1.293 2.75-1.025 2.75-1.025.018.527-.038 1.03-.103 1.992.64.692 1.029 1.588 1.029 2.68 0 3.841-2.339 4.69-4.566 4.94.359.309.678.92.678 1.855 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C21.137 20.166 24 16.419 24 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="https://cran.r-project.org/web/packages/bayesmlogit/index.html" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                                <!-- CRAN/Package Icon -->
+                                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2zM9 7h6v2H9V7zm0 4h6v2H9v-2zm0 4h6v2H9v-4z"/>
+                                </svg>
+                                CRAN
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tool 2: BayesTraj -->
+                    <div class="bg-white p-6 rounded-lg shadow-md animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">BayesTraj: Bayesian estimation of Group Based Trajectory Models</h3>
+                        <p class="text-gray-600 text-sm mb-3">
+                            <span class="font-semibold">Authors:</span> Zang, Emma; Justin T. Max
+                        </p>
+                        <div class="flex flex-wrap items-center gap-4">
+                            <a href="https://github.com/jtm508/bayestraj" target="_blank" rel="noopener noreferrer" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                                <!-- GitHub Icon -->
+                                <svg class="w-5 h-5 mr-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.163 6.839 9.48.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.465-1.11-1.465-.908-.62.069-.608.069-.608 1.004.07 1.531 1.032 1.531 1.032.892 1.529 2.341 1.085 2.91.823.092-.64.354-1.085.64-1.336-2.22-.253-4.555-1.116-4.555-4.949 0-1.092.39-1.988 1.029-2.68a3.73 3.73 0 01-.103-1.992s.827-.268 2.75 1.025c.78-.216 1.606-.324 2.433-.324.827 0 1.653.108 2.433.324 1.923-1.293 2.75-1.025 2.75-1.025.018.527-.038 1.03-.103 1.992.64.692 1.029 1.588 1.029 2.68 0 3.841-2.339 4.69-4.566 4.94.359.309.678.92.678 1.855 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C21.137 20.166 24 16.419 24 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                                </svg>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Updated Footer Section with Address, Contact, and Yale Logo on the right -->
+    <footer class="mt-20 py-10 px-4 md:px-8 lg:px-16 bg-gray-800 text-gray-300">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
+
+            <!-- Lab Info and Copyright (Left Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-lg font-bold text-gray-100 mb-2">Z-CAFE Lab</p>
+                <p>&copy; 2025 Z-CAFE Lab</p>
+                <p class="text-sm text-gray-400">Yale University</p>
+            </div>
+
+            <!-- Address Section (Middle-Left Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Address</p>
+                <p class="text-sm">210 Prospect St, New Haven, CT 06511</p>
+                <p class="text-sm">Yale University</p>
+            </div>
+
+            <!-- Contact Information Section (Middle-Right Section) -->
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-base font-semibold text-gray-100 mb-2">Contact</p>
+                <p class="text-sm">Phone: <a href="tel:+12034364181" class="hover:text-blue-400 transition-colors duration-200">203-436-4181</a></p>
+                <p class="text-sm">Email: <a href="mailto:emma.zang@yale.edu" class="hover:text-blue-400 transition-colors duration-200">emma.zang@yale.edu</a></p>
+            </div>
+
+            <!-- Yale 'Y' Logo (Rightmost Section) -->
+            <div class="flex-1 text-center md:text-right flex justify-center md:justify-end items-center">
+              <img src="yale_logo.png" width="100" height="200" alt="Yale Picture">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for scroll-based animations using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add 'is-visible' class when element enters viewport
+                        entry.target.classList.add('is-visible');
+                        // Stop observing once it's visible to prevent re-triggering
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '0px 0px -50px 0px' // Adjust margin to trigger slightly earlier/later
+            });
+
+            // Observe each element
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
