@@ -148,6 +148,40 @@
             background-color: #3b82f6;
         }
 
+        /* --- News Section Styling --- */
+        .news-list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid #2d3748;
+            text-decoration: none;
+            transition: border-color 0.3s ease;
+        }
+        .news-list-item:first-child {
+             border-top: 1px solid #2d3748;
+        }
+        .news-list-item span {
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        .news-list-item .arrow {
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            color: #60a5fa;
+            font-size: 1.5rem;
+        }
+        .news-list-item:hover span {
+            color: #60a5fa;
+        }
+        .news-list-item:hover .arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
     </style>
 </head>
 <body>
@@ -244,7 +278,6 @@
                         <div class="text-center">
                             <img src="EmmaZang.png" alt="Emma Zang" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
                             <span class="text-sm font-semibold text-gray-200 block">Emma Zang</span>
-                            <span class="text-xs text-gray-400 block">PI</span>
                         </div>
                         <!-- Faculty -->
                         <div class="text-center">
@@ -298,6 +331,41 @@
                 </div>
             </div>
         </section>
+
+        <section id="news-coverage" class="py-20 px-4 md:px-8 lg:px-16">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+                <!-- Left Column -->
+                <div class="md:col-span-1 animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-100 mb-4">In the News</h2>
+                    <p class="text-gray-400 mb-8">
+                        Stay updated with our latest features, interviews, and media coverage highlighting our contributions to the field.
+                    </p>
+                    <a href="highlights.html" class="btn-primary">View All Highlights</a>
+                </div>
+                <!-- Right Column -->
+                <div class="md:col-span-2 animate-on-scroll">
+                    <div class="news-list">
+                        <a href="https://medicine.yale.edu/news-article/geographic-location-affects-health-risks-in-older-adults/" target="_blank" rel="noopener noreferrer" class="news-list-item">
+                            <span>Geographic Location Affects Health Risks in Older Adults</span>
+                            <span class="arrow">&rarr;</span>
+                        </a>
+                        <a href="https://www.nytimes.com/2025/05/06/magazine/siblings-families-parents-influence.html?smid=url-share" target="_blank" rel="noopener noreferrer" class="news-list-item">
+                            <span>NYTimes: The Surprising Ways That Siblings Shape Our Lives</span>
+                            <span class="arrow">&rarr;</span>
+                        </a>
+                        <a href="https://thesocietypages.org/ccf/2024/08/13/when-childcare-centers-close-who-takes-care-of-americas-children/" target="_blank" rel="noopener noreferrer" class="news-list-item">
+                            <span>TheSocietyPages: When childcare centers close: Who takes care of America’s children?</span>
+                            <span class="arrow">&rarr;</span>
+                        </a>
+                        <a href="https://isps.yale.edu/news/blog/2024/07/boosting-fertility-with-remote-work-isps-and-macmillan-center-introduce-grants-for" target="_blank" rel="noopener noreferrer" class="news-list-item">
+                            <span>YaleISPS: Boosting Fertility with Remote Work: ISPS and MacMillan Center Introduce Grants for Studies on Global and Domestic Issues</span>
+                            <span class="arrow">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
     <!-- Sponsors Section
     <section id="sponsors" class="py-16 px-4 md:px-8 lg:px-16 text-center bg-gray-900 bg-opacity-30">
