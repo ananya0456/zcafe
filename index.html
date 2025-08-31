@@ -149,70 +149,6 @@
         .carousel-arrow:hover {
             background-color: rgba(59, 130, 246, 0.8);
         }
-
-        /* --- Team Preview Section Styling --- */
-        .team-photo-container {
-            transition: transform 0.3s ease;
-            cursor: pointer;
-            position: relative; /* Ensure overlay is positioned relative to this */
-            overflow: hidden; /* Hide anything that goes outside the circle */
-            border-radius: 9999px;
-        }
-
-        .team-photo-container img {
-            transition: transform 0.3s ease, filter 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-        }
-
-        .team-photo-container:hover img {
-            transform: scale(1.1);
-            filter: grayscale(80%) blur(2px);
-        }
-
-        .team-name-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(13, 26, 47, 0.7);
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            pointer-events: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center; /* Ensures text inside is always centered */
-            padding: 0.5rem;
-        }
-
-        .team-photo-container:hover .team-name-overlay {
-            opacity: 1;
-        }
-        .team-scroll-container {
-            max-height: 240px; /* Reduced height to encourage scrolling */
-            overflow-y: auto;
-            padding-right: 1rem;
-        }
-        .team-scroll-container::-webkit-scrollbar {
-            width: 8px;
-        }
-        .team-scroll-container::-webkit-scrollbar-track {
-            background: #111c2e;
-            border-radius: 10px;
-        }
-        .team-scroll-container::-webkit-scrollbar-thumb {
-            background-color: #2d3748;
-            border-radius: 10px;
-            border: 2px solid #111c2e;
-        }
-        .team-scroll-container::-webkit-scrollbar-thumb:hover {
-            background-color: #3b82f6;
-        }
-
-
     </style>
 </head>
 <body>
@@ -304,24 +240,61 @@
 
                 <!-- Right Column: Scrolling Photos -->
                 <div class="md:col-span-2 team-scroll-container animate-on-scroll">
-                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4 md:gap-6">
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-y-6 gap-x-4">
                         <!-- PI -->
-                        <div class="team-photo-container relative"><img src="EmmaZang.png" alt="Emma Zang" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Emma Zang</span><span class="text-xs text-gray-300 block">PI</span></div></div>
+                        <div class="text-center">
+                            <img src="EmmaZang.png" alt="Emma Zang" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Emma Zang</span>
+                            <span class="text-xs text-gray-400 block">PI</span>
+                        </div>
                         <!-- Faculty -->
-                        <div class="team-photo-container relative"><img src="Yifan.png" alt="Yifan Lou" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Yifan Lou</span></div></div>
+                        <div class="text-center">
+                             <img src="Yifan.png" alt="Yifan Lou" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                             <span class="text-sm font-semibold text-gray-200 block">Yifan Lou</span>
+                        </div>
                         <!-- Postdoc -->
-                        <div class="team-photo-container relative"><img src="Yongxin.jpg" alt="Yongxin Shang" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Yongxin Shang</span></div></div>
+                        <div class="text-center">
+                            <img src="Yongxin.jpg" alt="Yongxin Shang" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Yongxin Shang</span>
+                        </div>
                         <!-- Grad Students -->
-                        <div class="team-photo-container relative"><img src="ZitongWang.png" alt="Zitong Wang" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Zitong Wang</span></div></div>
-                        <div class="team-photo-container relative"><img src="siyao_lu.JPG" alt="Siyao Lu" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Siyao Lu</span></div></div>
-                        <div class="team-photo-container relative"><img src="JasonWong.jpeg" alt="Jason Wong" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Jason Wong</span></div></div>
-                        <div class="team-photo-container relative"><img src="Jiaowei_Gong.png" alt="Jiaowei Gong" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Jiaowei Gong</span></div></div>
-                        <div class="team-photo-container relative"><img src="yishi_yin.jpg" alt="Yishi Yin" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Yishi Yin</span></div></div>
+                        <div class="text-center">
+                            <img src="ZitongWang.png" alt="Zitong Wang" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Zitong Wang</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="siyao_lu.JPG" alt="Siyao Lu" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Siyao Lu</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="JasonWong.jpeg" alt="Jason Wong" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Jason Wong</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="Jiaowei_Gong.png" alt="Jiaowei Gong" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Jiaowei Gong</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="yishi_yin.jpg" alt="Yishi Yin" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Yishi Yin</span>
+                        </div>
                         <!-- Undergrads -->
-                        <div class="team-photo-container relative"><img src="melissa_tian.png" alt="Melissa Tian" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Melissa Tian</span></div></div>
-                        <div class="team-photo-container relative"><img src="AviKabra.png" alt="Avi Kabra" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Avi Kabra</span></div></div>
-                        <div class="team-photo-container relative"><img src="Valeri.jpg" alt="Valeri Vankov" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Valeri Vankov</span></div></div>
-                        <div class="team-photo-container relative"><img src="ananya.png" alt="Ananya Vuppala" class="w-24 h-24 rounded-full object-cover"><div class="team-name-overlay"><span class="text-xs font-semibold">Ananya Vuppala</span></div></div>
+                        <div class="text-center">
+                            <img src="melissa_tian.png" alt="Melissa Tian" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Melissa Tian</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="AviKabra.png" alt="Avi Kabra" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Avi Kabra</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="Valeri.jpg" alt="Valeri Vankov" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Valeri Vankov</span>
+                        </div>
+                        <div class="text-center">
+                            <img src="ananya.png" alt="Ananya Vuppala" class="w-24 h-24 rounded-full object-cover mx-auto mb-2 border-2 border-transparent hover:border-blue-500 transition-colors duration-300">
+                            <span class="text-sm font-semibold text-gray-200 block">Ananya Vuppala</span>
+                        </div>
                     </div>
                 </div>
             </div>
