@@ -126,29 +126,28 @@
             color: #60a5fa;
         }
 
-        /* --- Sponsor Carousel Styling --- */
-        .sponsor-carousel-container {
-            -webkit-mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
-            mask-image: linear-gradient(to right, transparent, white 5%, white 95%, transparent);
+        /* --- Team Preview Section Styling --- */
+        .team-scroll-container {
+            max-height: 240px; /* Reduced height to encourage scrolling */
+            overflow-y: auto;
+            padding-right: 1rem;
         }
-        .sponsor-carousel {
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* For Firefox */
+        .team-scroll-container::-webkit-scrollbar {
+            width: 8px;
         }
-        .sponsor-carousel::-webkit-scrollbar {
-            display: none; /* For Chrome, Safari, and Opera */
+        .team-scroll-container::-webkit-scrollbar-track {
+            background: #111c2e;
+            border-radius: 10px;
         }
-        .sponsor-card {
-            flex: 0 0 200px; /* Flex-basis of 200px */
-            max-width: 200px;
+        .team-scroll-container::-webkit-scrollbar-thumb {
+            background-color: #2d3748;
+            border-radius: 10px;
+            border: 2px solid #111c2e;
         }
-        .carousel-arrow {
-            background-color: rgba(59, 130, 246, 0.5);
-            transition: background-color 0.3s ease;
+        .team-scroll-container::-webkit-scrollbar-thumb:hover {
+            background-color: #3b82f6;
         }
-        .carousel-arrow:hover {
-            background-color: rgba(59, 130, 246, 0.8);
-        }
+
     </style>
 </head>
 <body>
