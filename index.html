@@ -149,6 +149,68 @@
         .carousel-arrow:hover {
             background-color: rgba(59, 130, 246, 0.8);
         }
+
+        /* --- Team Preview Section Styling --- */
+        .team-photo-container {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .team-photo-container:hover {
+            transform: scale(1.05);
+        }
+        .team-photo-container img {
+            border: 3px solid #2d3748;
+            transition: border-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+        .team-photo-container:hover img {
+            border-color: #3b82f6;
+        }
+        .team-name-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-bottom-left-radius: 9999px;
+            border-bottom-right-radius: 9999px;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 0.75rem;
+            text-align: center; /* Ensures text inside is always centered */
+        }
+        .team-photo-container:hover .team-name-overlay {
+            opacity: 1;
+        }
+        .team-scroll-container {
+            max-height: 240px; /* Reduced height to encourage scrolling */
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+        .team-scroll-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .team-scroll-container::-webkit-scrollbar-track {
+            background: #111c2e;
+            border-radius: 10px;
+        }
+        .team-scroll-container::-webkit-scrollbar-thumb {
+            background-color: #2d3748;
+            border-radius: 10px;
+            border: 2px solid #111c2e;
+        }
+        .team-scroll-container::-webkit-scrollbar-thumb:hover {
+            background-color: #3b82f6;
+        }
+
+
     </style>
 </head>
 <body>
