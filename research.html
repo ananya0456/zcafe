@@ -97,6 +97,37 @@
         .research-card .btn-primary:hover {
              background-color: #2563eb;
         }
+
+        /* --- Vertical Filter Tabs Styling --- */
+        .filter-container-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem; /* Reduced gap for a tighter list */
+            align-items: flex-start;
+        }
+        .filter-tab {
+            padding: 0.75rem 1rem;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-left: 3px solid transparent; /* Add space for the active border */
+            color: #9ca3af;
+            cursor: pointer;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        .filter-tab:hover {
+            background-color: rgba(26, 39, 59, 0.5);
+            color: #e5e7eb;
+        }
+        .filter-tab.active {
+            background-color: transparent; /* No background highlight */
+            color: #60a5fa; /* Bright blue text for active filter */
+            font-weight: 600;
+            border-left-color: #3b82f6; /* Use border to indicate active state */
+        }
+
     </style>
 </head>
 <body>
@@ -225,6 +256,25 @@
                 </div>
             </section>
 
+            <!-- Recent Publications V2-->
+                <section id="publications-section" class="mb-16">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8">Recent Publications V2</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
+                        <!-- Left Column: Filters -->
+                        <div class="md:col-span-1">
+                             <div id="filter-container" class="filter-container-vertical">
+                                <!-- Filter tabs will be inserted here by JS -->
+                            </div>
+                        </div>
+                        <!-- Right Column: Publications -->
+                        <div class="md:col-span-3">
+                            <div id="publications-grid" class="grid grid-cols-1 gap-8">
+                                <!-- Publications will be dynamically inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
             <br>
             <br>
 
@@ -313,6 +363,79 @@
                 });
             }, { threshold: 0.1 });
             animateElements.forEach(element => observer.observe(element));
+
+            
+
+            // --- Data for Research Items ---
+            const researchAreas = [
+                'Family Demography', 'Policy Evaluations', 'Population Health', 
+                'Cognitive Aging', 'China', 'Health Disparities', 
+                'Computational Social Science/AI', 'Statistical Methods'
+            ];
+
+            const allItems = [
+                // Projects
+                { type: 'project', title: "Unplanned Misallocation: Gender and Spousal Spillover Effects of Retirement on Time Use", authors: "Gong, Jiaowei., Yifan Lou, Emma Zang.", categories: ['Family Demography', 'Health Disparities'] },
+                { type: 'project', title: "Childhood Upward Mobility Context and Health in Early Adulthood", authors: "Zang, Emma., Meera Choi*, Melissa Tian*.", categories: ['Population Health', 'Health Disparities'] },
+                { type: 'project', title: "Property Division Law and Investment in Household Public Goods: Evidence in China", authors: "Zang, Emma., Xi Yang, ZitongWang*, Ang Sun.", categories: ['Family Demography', 'Policy Evaluations', 'China'] },
+                { type: 'project', title: "Teenage Pregnancy’s Spillover Effects Revisited", authors: "Zang, Emma., Keitaro Okura, Haolun Li.", categories: ['Family Demography', 'Population Health'] },
+                { type: 'project', title: "Clean Air Act 1990 and Its Long-Term Impact on Children’s Educational Performance.", authors: "Li, Haolun., Emma Zang.", categories: ['Policy Evaluations', 'Population Health'] },
+                { type: 'project', title: "Protests and Healthcare Utilization", authors: "Zang, Emma., Yining Yang.", categories: ['Health Disparities', 'Policy Evaluations'] },
+                // Publications
+                { type: 'publication', title: "Publication Title One: A Comprehensive Analysis of X", summary: "This paper presents a novel approach...", date: "October 26, 2024", links: { "Read Full Text": "#", "View Supplement": "#" }, categories: ['Statistical Methods', 'Cognitive Aging'] },
+                { type: 'publication', title: "Publication Title Two: Methodological Advances in Y Research", summary: "This study introduces an innovative methodology...", date: "September 1, 2024", links: { "Read Full Text": "#", "Data Repository": "#" }, categories: ['Computational Social Science/AI', 'Statistical Methods'] },
+                { type: 'publication', title: "Publication Title Three: Impact of Z on Public Health", summary: "We examine the long-term public health implications...", date: "August 15, 2024", links: { "Read Full Text": "#", "Policy Brief": "#" }, categories: ['Population Health', 'Policy Evaluations'] },
+                // Tools
+                { type: 'tool', title: "bayesmlogit: Bayesian Multistate Life Table Method for Complex State Spaces", authors: "Zang, Emma; Xuezhixing Zhang; Scott Lynch", links: { "GitHub": "https://github.com/dewelve/bayesmlogit", "CRAN": "https://cran.r-project.org/web/packages/bayesmlogit/index.html" }, categories: ['Statistical Methods', 'Computational Social Science/AI'] },
+                { type: 'tool', title: "BayesTraj: Bayesian estimation of Group Based Trajectory Models", authors: "Zang, Emma; Justin T. Max", links: { "GitHub": "https://github.com/jtm508/bayestraj" }, categories: ['Statistical Methods', 'Computational Social Science/AI'] },
+            ];
+
+            const filterContainer = document.getElementById('filter-container');
+            const projectsGrid = document.getElementById('projects-grid');
+            const publicationsGrid = document.getElementById('publications-grid');
+            const toolsGrid = document.getElementById('tools-grid');
+            
+            // --- Create and Render Filter Tabs ---
+            const allCategories = ['All', ...researchAreas];
+            filterContainer.innerHTML = allCategories.map(cat => `<button class="filter-tab ${cat === 'All' ? 'active' : ''}" data-category="${cat}">${cat}</button>`).join('');
+            
+            // --- Render Static Content (Projects & Tools) ---
+            function renderStaticContent() {
+                const projects = allItems.filter(item => item.type === 'project');
+                const tools = allItems.filter(item => item.type === 'tool');
+
+                projectsGrid.innerHTML = projects.map(p => `
+                    <div class="research-card p-6">
+                        <h3 class="text-xl font-semibold mb-3">${p.title}</h3>
+                        <p class="text-gray-400 mb-4 text-sm">${p.authors}</p>
+                        <a href="#" class="font-semibold hover:underline mt-auto self-start">Learn More &rarr;</a>
+                    </div>`).join('');
+                
+                toolsGrid.innerHTML = tools.map(t => `
+                     <div class="research-card p-6 text-left">
+                        <h3 class="text-xl font-semibold mb-2">${t.title}</h3>
+                        <p class="text-sm mb-3 text-gray-300"><strong>Authors:</strong> ${t.authors}</p>
+                        <div class="flex flex-wrap items-center gap-4">${Object.entries(t.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="flex items-center hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
+                    </div>`).join('');
+            }
+
+            // --- Render Filtered Publications ---
+            function renderFilteredPublications(category) {
+                const allPublications = allItems.filter(item => item.type === 'publication');
+                const filteredPublications = category === 'All' 
+                    ? allPublications 
+                    : allPublications.filter(item => item.categories.includes(category));
+
+                publicationsGrid.innerHTML = filteredPublications.map(p => `
+                    <div class="research-card p-6 text-left">
+                        <h3 class="text-xl font-semibold mb-2">${p.title}</h3>
+                        <p class="text-gray-400 text-sm mb-3">${p.summary}</p>
+                        <p class="text-gray-500 text-xs mb-3"><strong>Date:</strong> ${p.date}</p>
+                        <div class="flex flex-wrap gap-x-4 gap-y-1">${Object.entries(p.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
+                    </div>`).join('');
+            }
+
+
 
             // --- Full Page Subtle Wave Animation ---
             const bgCanvas = document.getElementById('background-canvas');
