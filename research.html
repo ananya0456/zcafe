@@ -364,7 +364,7 @@
             }, { threshold: 0.1 });
             animateElements.forEach(element => observer.observe(element));
 
-            
+
 
             // --- Data for Research Items ---
             const researchAreas = [
@@ -434,6 +434,16 @@
                         <div class="flex flex-wrap gap-x-4 gap-y-1">${Object.entries(p.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
                     </div>`).join('');
             }
+
+            // --- Add Event Listeners to Tabs ---
+            const tabs = document.querySelectorAll('.filter-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    renderFilteredPublications(tab.dataset.category);
+                });
+            });
 
 
 
