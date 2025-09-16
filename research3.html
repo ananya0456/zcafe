@@ -234,6 +234,58 @@
             <br>
             <br>
 
+            <!--
+            <!- - RECENT PUBLICATIONS V2 - ->
+            <section>
+                <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Recent Publications</h2>
+                <div class="grid grid-cols-1 gap-8">
+                    <div class="research-card p-6 animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold mb-2">Regional disparities in cognitive life expectancy: The role of birth and current residence in the United States</h3>
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Summary:</span> This study, analyzing data from over 19,000 Americans aged 50 and older from the Health and Retirement Study (1998-2020), investigates the impact of birth region and current residence on cognitive health, 
+                            finding that region of birth plays a more significant role than current residence in determining cognitive life expectancy. The key findings reveal a distinct disadvantage for individuals born in the South, who are expected to have fewer cognitively healthy years 
+                            and more years with dementia, regardless of where they live later in life. The study also identifies a "Western birth disadvantage," particularly for women, who are projected to spend a higher percentage of their later years with cognitive impairment, even if it 
+                            doesn't progress to full dementia. The authors conclude that early-life geographic exposures have a lasting impact, suggesting that historical conditions in the South and West can shape cognitive health decades later.
+                        </p>
+                        <!- -
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Key Figures:</span> text.
+                        </p>
+                        - ->
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Date:</span> April 30, 2025
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://doi.org/10.1016/j.healthplace.2025.103475" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">View Paper</a>
+                        </div>
+                    </div>
+                    <div class="research-card p-6 animate-on-scroll text-left">
+                        <h3 class="text-xl font-semibold mb-2">Linked Lives: Dyadic Trajectories of Cognitive Function Among Middle-Aged and Older Couples</h3>
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Summary:</span> This study examines the linked trajectories of cognitive function in 2,130 middle-aged and older heterosexual couples in China from 2011 to 2020. The researchers identified two main patterns: the 
+                            majority of couples (81.6%) showed high, stable cognitive function over time (with husbands often starting at a slightly higher level), while a smaller group (18.4%) was characterized by the husband experiencing a more rapid cognitive decline than his wife. 
+                            Membership in this latter group was associated with the husband being older, having more functional limitations, and the couple living in a rural area. Critically, couples where the husband's cognitive function declined rapidly both reported significantly 
+                            higher levels of depressive symptoms, highlighting how changes in one partner's cognitive health can impact the mental well-being of both spouses.
+                        </p>
+                        <!- -
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Key Figures:</span> Figure 1 outlines the new algorithm flow. Figure 3 displays the validation results, highlighting a [percentage] improvement in accuracy compared to existing methods.
+                        </p>
+                        - ->
+                        <p class="text-sm mb-3">
+                            <span class="font-semibold text-gray-300">Date:</span> April 25, 2025
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://doi.org/10.1093/geronb/gbaf063" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">View Paper</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            -->
+
+            <br>
+            <br>
+
             <!-- TOOLS SECTION -->
             <section>
                 <h2 class="text-2xl md:text-3xl font-bold text-blue-300 mb-8 animate-on-scroll">Tools</h2>
@@ -330,40 +382,73 @@
             ];
 
             const allItems = [
-                // Publications - Merged from V2 section and existing data
+                // Publications
                 { type: 'publication', title: "Regional disparities in cognitive life expectancy: The role of birth and current residence in the United States", 
                     summary: "A study of older Americans found that birth region is a more significant predictor of long-term cognitive health than current residence. People born in the South tend to have fewer cognitively healthy years and more years with dementia, irrespective of where they live later in life. A similar disadvantage was found for those born in the West, especially women. The findings suggest that early-life geographic conditions have a lasting impact on cognitive health in old age.", 
                     date: "April 30, 2025", links: { "View Paper": "https://doi.org/10.1016/j.healthplace.2025.103475"}, 
-                    categories: ['Statistical Methods', 'Population Health', 'Health Disparities', 'Cognitive Aging'] },
+                    categories: ['Statistical Methods', 'Population Health'] },
                 { type: 'publication', title: "Linked Lives: Dyadic Trajectories of Cognitive Function Among Middle-Aged and Older Couples", 
                 summary: "A study of older Chinese couples found a direct link between a husband's rapid cognitive decline and higher rates of depression in both spouses. While most couples maintained stable cognitive function, this specific pattern of the husband's decline was associated with factors like older age and rural residence, highlighting how one partner's cognitive health strongly impacts the other's mental well-being.", 
                 date: "April 25, 2025", links: { "View Paper": "https://doi.org/10.1093/geronb/gbaf063"}, 
-                categories: [ 'China', 'Cognitive Aging', 'Population Health', 'Family Demography'] },
+                categories: [ 'China', 'Cognitive Aging', 'Population Health'] },
                 { type: 'publication', title: "Incidence of Frailty, Dementia, and Disability Among Community-Living Older Americans According to County-Level Disadvantage", 
                 summary: "'Community-living older Americans who reside in disadvantaged counties have a higher incidence of frailty, probable dementia, and ADL disability over a 5-year follow-up period compared to their non-disadvantaged counterparts. Findings underscore the vital, underappreciated role that county-level social contextual disadvantage plays on clinically meaningful outcomes in older persons in the U.S.'", 
                 date: "April 8, 2025", links: { "View Paper": "https://doi.org/10.1111/jgs.19465"}, 
-                categories: ['Population Health', 'Health Disparities', 'Cognitive Aging'] },
+                categories: ['Population Health'] },
                 { type: 'publication', title: "Critical Illness, Major Surgery, and Other Hospitalizations and Active and Disabled Life Expectancy", 
                 summary: "This study of older adults in Connecticut found that hospitalizations for critical illness and major non-elective surgeries significantly reduce the number of years a person can expect to live without disability. In contrast, major elective surgeries did not have the same negative impact. The findings suggest that preventing serious illnesses and injuries, along with providing better post-hospitalization care, could lead to more years of independent living for older adults.", 
                 date: "April 3, 2025", links: { "View Paper": "https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2832133"}, 
-                categories: ['Population Health', 'Health Disparities'] },
+                categories: ['Population Health'] },
                 { type: 'publication', title: "Novel indices of state- and county-level social disadvantage in older Americans and disparities in mortality", 
                 summary: "This study developed new indices to measure social disadvantage for older Americans at both the state and county levels. The research confirmed that older adults in areas identified as 'disadvantaged' by these indices face a significantly higher risk of mortality. This highlights the critical role that geographic location plays in the health and longevity of older populations.", 
                 date: "March 8, 2025", links: { "View Paper": "https://doi.org/10.1016/j.healthplace.2025.103438"}, 
-                categories: ['Population Health', 'Health Disparities', 'Statistical Methods'] },
+                categories: ['Population Health', 'Health Disparities'] },
                 { type: 'publication', title: "Explaining Racial and Ethnic Disparities in Advance Care Planning: A Decomposition Analysis", 
                 summary: "This study reveals significant racial disparities in end-of-life planning, with Hispanic and Black older adults participating less than their White counterparts. These gaps are largely driven by differences in education, socioeconomic status, and healthcare access.", 
                 date: "February 21, 2025", links: { "View Paper": "https://doi.org/10.1016/j.jpainsymman.2025.02.014"}, 
-                categories: ['Population Health', 'Health Disparities', 'Policy Evaluations'] }
+                categories: ['Population Health', 'Health Disparities', 'Policy Evaluations'] },
+                { type: 'publication', title: "title", 
+                summary: "summary", 
+                date: "date", links: { "View Paper": "link"}, 
+                categories: ['Population Health'] },
+                { type: 'publication', title: "title", 
+                summary: "summary", 
+                date: "date", links: { "View Paper": "link"}, 
+                categories: ['Population Health'] },
+                { type: 'publication', title: "title", 
+                summary: "summary", 
+                date: "date", links: { "View Paper": "link"}, 
+                categories: ['Population Health'] },
             ];
 
             const filterContainer = document.getElementById('filter-container');
             const publicationsGrid = document.getElementById('publications-grid');
             
             // --- Create and Render Filter Tabs ---
+            //const allCategories = [...researchAreas];
             const allCategories = ['All', ...researchAreas];
             filterContainer.innerHTML = allCategories.map(cat => `<button class="filter-tab ${cat === 'All' ? 'active' : ''}" data-category="${cat}">${cat}</button>`).join('');
             
+            // --- Render Static Content (Projects & Tools) ---
+            function renderStaticContent() {
+                const projects = allItems.filter(item => item.type === 'project');
+                const tools = allItems.filter(item => item.type === 'tool');
+
+                projectsGrid.innerHTML = projects.map(p => `
+                    <div class="research-card p-6">
+                        <h3 class="text-xl font-semibold mb-3">${p.title}</h3>
+                        <p class="text-gray-400 mb-4 text-sm">${p.authors}</p>
+                        <a href="#" class="font-semibold hover:underline mt-auto self-start">Learn More &rarr;</a>
+                    </div>`).join('');
+                
+                toolsGrid.innerHTML = tools.map(t => `
+                     <div class="research-card p-6 text-left">
+                        <h3 class="text-xl font-semibold mb-2">${t.title}</h3>
+                        <p class="text-sm mb-3 text-gray-300"><strong>Authors:</strong> ${t.authors}</p>
+                        <div class="flex flex-wrap items-center gap-4">${Object.entries(t.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="flex items-center hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
+                    </div>`).join('');
+            }
+
             // --- Render Filtered Publications ---
             function renderFilteredPublications(category) {
                 const allPublications = allItems.filter(item => item.type === 'publication');
@@ -371,17 +456,13 @@
                     ? allPublications 
                     : allPublications.filter(item => item.categories.includes(category));
 
-                if (filteredPublications.length > 0) {
-                    publicationsGrid.innerHTML = filteredPublications.map(p => `
-                        <div class="research-card p-6 text-left">
-                            <h3 class="text-xl font-semibold mb-2">${p.title}</h3>
-                            <p class="text-gray-400 text-sm mb-3">${p.summary}</p>
-                            <p class="text-gray-500 text-xs mb-3"><strong>Date:</strong> ${p.date}</p>
-                            <div class="flex flex-wrap gap-x-4 gap-y-1">${Object.entries(p.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
-                        </div>`).join('');
-                } else {
-                    publicationsGrid.innerHTML = `<p class="text-gray-400 italic">No publications found for this research area.</p>`;
-                }
+                publicationsGrid.innerHTML = filteredPublications.map(p => `
+                    <div class="research-card p-6 text-left">
+                        <h3 class="text-xl font-semibold mb-2">${p.title}</h3>
+                        <p class="text-gray-400 text-sm mb-3">${p.summary}</p>
+                        <p class="text-gray-500 text-xs mb-3"><strong>Date:</strong> ${p.date}</p>
+                        <div class="flex flex-wrap gap-x-4 gap-y-1">${Object.entries(p.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
+                    </div>`).join('');
             }
 
             // --- Add Event Listeners to Tabs ---
@@ -395,6 +476,7 @@
             });
 
             // --- Initial Render ---
+            renderStaticContent();
             renderFilteredPublications('All');
 
 
@@ -407,15 +489,10 @@
 
             function resizeBgCanvas() {
                 bgCanvas.width = window.innerWidth;
-                bgCanvas.height = document.body.scrollHeight; // Make canvas height of the whole page
+                bgCanvas.height = window.innerHeight;
                 initBg();
             }
-             // Recalculate on resize and also after a short delay to catch layout shifts
-            window.addEventListener('resize', () => {
-                resizeBgCanvas();
-                setTimeout(resizeBgCanvas, 250);
-            });
-
+            window.addEventListener('resize', resizeBgCanvas);
 
             class BgWave {
                  constructor(config) {
@@ -444,8 +521,8 @@
                     { color: 'rgba(96, 165, 250, 0.05)', amplitude: 60, frequency: 0.008 },
                     { color: 'rgba(255, 255, 255, 0.05)', amplitude: 40, frequency: 0.012 },
                 ];
-                const numWaves = Math.floor(bgCanvas.height / 100); // Create waves based on page height
-                for(let i = 0; i < numWaves; i++) { 
+                // **FIX**: Reduced the number of waves from 15 to 8 for a less crowded effect.
+                for(let i = 0; i < 8; i++) { 
                     const config = waveConfigs[i % waveConfigs.length];
                     bgWaves.push(new BgWave(config));
                 }
@@ -458,12 +535,8 @@
                 requestAnimationFrame(animateBg);
             }
 
-            // Initial call after a delay to ensure page layout is complete
-            setTimeout(() => {
-                resizeBgCanvas();
-                animateBg();
-            }, 100);
-
+            resizeBgCanvas();
+            animateBg();
 
             // --- Header Data Wave Visualization ---
             const headerCanvas = document.getElementById('header-viz');
@@ -554,5 +627,3 @@
     </script>
 </body>
 </html>
-i need to add a feature so when a filter is selected, a short summary of the research area appears below the title "recent publications" and above the publications. the user should be able to click a "read more" button to expand the full summary, and "read less" to hide it.
-
