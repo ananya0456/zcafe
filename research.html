@@ -457,8 +457,8 @@
                     publicationsGrid.innerHTML = filteredPublications.map(p => `
                         <div class="research-card p-6 text-left">
                             <h3 class="text-xl font-semibold mb-2">${p.title}</h3>
-                            <p class="text-gray-400 text-sm mb-3">${p.summary}</p>
                             <p class="text-gray-500 text-xs mb-3"><strong>Date:</strong> ${p.date}</p>
+                            <p class="text-gray-400 text-sm mb-3">${p.authors}</p>
                             <div class="flex flex-wrap gap-x-4 gap-y-1">${Object.entries(p.links).map(([text, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="hover:underline text-sm font-medium">${text}</a>`).join('')}</div>
                         </div>`).join('');
                 } else {
